@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.render("landing");
+  res.render("landingPage");
 });
 
 app.listen(port, () => {
