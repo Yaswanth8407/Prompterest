@@ -13,6 +13,22 @@ app.get("/", (req, res) => {
   res.render("landingPage");
 });
 
+app.get("/showSignup", (req, res) => {
+  res.render("signupPage");
+});
+
+app.get("/showLogin", (req, res) => {
+  res.render("loginPage");
+});
+
+app.post("/signup", (req, res) => {
+  console.log(res.body);
+});
+
+app.post("/login", (req, res) => {
+  console.log(res.body);
+});
+
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
