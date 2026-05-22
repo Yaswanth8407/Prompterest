@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
 app.get("/", (req, res) => {
-  res.render("landingPage");
+  res.render("feedPage");
 });
 
 app.listen(port, () => {
