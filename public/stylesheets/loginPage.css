@@ -1,0 +1,197 @@
+body {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    line-height: 1.5;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container {
+
+    /* display: grid;
+    grid-template-columns: 1fr 350px ;
+    gap: 10px; */
+    /* height: 100%; */
+    display: flex;
+    height: 100vh;
+}
+
+
+.img_sec {
+
+    width: 50%;
+}
+
+.login_sec {
+    width: 50%;
+    height: 100vh;
+}
+
+
+.login_sec {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background: #020817;
+}
+
+.login {
+
+    width: 350px;
+    height: 570px;
+    border-radius: 10px;
+    border: 1px solid #333;
+    background-color: #0B1220;
+    ;
+    box-shadow: 0 0 50px rgba(2, 84, 207, 0.2);
+
+    margin: 0;
+    padding: 0;
+}
+
+.head h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.head {
+
+    color: #f21335;
+    margin-bottom: 15px;
+    margin-top: 30px;
+}
+
+.head2 h3 {
+    padding: 0;
+    margin: 0;
+    color: #e1dcdc;
+
+}
+
+
+
+
+.head3 {
+
+    color: #afb6c2;
+    font-size: x-small;
+    margin-bottom: 10px;
+    object-fit: contain;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 20px 10px 20px;
+
+
+}
+
+form span {
+    color: #f2f3f5;
+    font-size: x-small;
+    /* font-weight: bold; */
+
+
+
+}
+
+input[type="text"] {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #25324e;
+    border: 1px solid #3e3e3e;
+    color: #f2f3f5;
+
+}
+
+input[type="password"] {
+    padding: 10px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background-color: #25324e;
+    border: 1px solid #3e3e3e;
+
+
+}
+
+.lgn_button {
+    padding: 14px;
+    border-radius: 25px;
+    background-color: #f21335;
+    border: 0px;
+    font-size: larger;
+    font-weight: 700;
+    color: rgb(255, 255, 255);
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+form .text {
+
+    color: #ccaab3;
+    font-weight: normal;
+    margin-bottom: 10px;
+}
+
+.google_button {
+
+    border-radius: 20px;
+    padding: 10px 50px 10px 50px;
+    margin-right: 20px;
+    background-color: #25324e;
+    border: 1px solid #3e3e3e;
+    color: #f2f3f5;
+    cursor: pointer;
+     
+
+}
+
+.google_button i{
+    display: inline-block;
+    
+    width: 10px;
+}
+
+
+.github_button {
+
+    border-radius: 20px;
+    padding: 10px 50px 10px 50px;
+    text-align: center;
+    background-color: #25324e;
+    border: 1px solid #3e3e3e;
+    color: #f2f3f5;
+    cursor: pointer;
+     
+
+
+}
+
+
+
+
+.button {
+
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+    
+
+}
+
+form .text2{
+
+    color: #ccaab3;
+   
+
+}
+
+form .anchor{
+
+    color: #e693a9;
+    cursor: pointer;
+}
