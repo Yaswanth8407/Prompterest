@@ -1,13 +1,303 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="/stylesheets/feedPage.css">
-</head>
-<body>
-    
+<!doctype html>
+<html class="dark" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompterest | AI Discovery Feed</title>
+
+    <script>
+      (function () {
+        let s;
+        try {
+          s = localStorage.getItem("prest-theme");
+        } catch (_) {}
+        const d = s
+          ? s === "dark"
+          : window.matchMedia("(prefers-color-scheme:dark)").matches;
+        document.documentElement.classList[d ? "add" : "remove"]("dark");
+      })();
+    </script>
+
+    <link rel="stylesheet" href="/stylesheets/feedPage.css" />
+  </head>
+  <body>
+    <aside id="sidebar">
+      <div class="logo">P</div>
+
+      <nav>
+        <a class="nav-icon active" href="#" data-tip="Home">
+          <span
+            class="material-symbols-outlined"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+            >home</span
+          >
+          <span class="nav-label">Home</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Explore">
+          <span class="material-symbols-outlined">explore</span>
+          <span class="nav-label">Explore</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Create">
+          <span class="material-symbols-outlined">add_circle</span>
+          <span class="nav-label">Create</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Saved">
+          <span class="material-symbols-outlined">bookmark</span>
+          <span class="nav-label">Saved</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Notifications">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="nav-label">Notifications</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Messages">
+          <span class="material-symbols-outlined">chat</span>
+          <span class="nav-label">Messages</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Trending">
+          <span class="material-symbols-outlined">trending_up</span>
+          <span class="nav-label">Trending</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Profile">
+          <span class="material-symbols-outlined">person</span>
+          <span class="nav-label">Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a class="nav-icon" href="#" data-tip="Settings">
+          <span class="material-symbols-outlined">settings</span>
+          <span class="nav-label">Settings</span>
+        </a>
+        <a class="nav-icon" href="#" data-tip="Help">
+          <span class="material-symbols-outlined">help_outline</span>
+          <span class="nav-label">Help</span>
+        </a>
+      </div>
+    </aside>
+
+    <header id="header" class="header-in">
+      <div class="header-left">
+        <h1 class="header-logo">Prompterest</h1>
+
+        <div class="search-wrap">
+          <span class="material-symbols-outlined search-icon">search</span>
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Search AI prompts, artists, styles…"
+            aria-label="Search"
+          />
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button
+          class="toggle-track"
+          onclick="toggleTheme()"
+          aria-label="Toggle dark/light mode"
+        >
+          <span
+            class="toggle-star"
+            style="width: 3px; height: 3px; top: 5px; left: 13px"
+          ></span>
+          <span
+            class="toggle-star"
+            style="width: 2px; height: 2px; top: 15px; left: 20px"
+          ></span>
+          <span
+            class="toggle-star"
+            style="width: 2px; height: 2px; top: 7px; left: 32px"
+          ></span>
+          <div class="toggle-knob">
+            <span class="material-symbols-outlined" id="toggle-icon"
+              >dark_mode</span
+            >
+          </div>
+        </button>
+
+        <button class="icon-btn" aria-label="Notifications">
+          <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button class="icon-btn" aria-label="AI Tools">
+          <span class="material-symbols-outlined">psychology</span>
+        </button>
+
+        <img
+          class="avatar"
+          src="https://media.licdn.com/dms/image/v2/D4D03AQEgCuuhRC7DvA/profile-displayphoto-scale_400_400/B4DZ2ve7N1GcAg-/0/1776765615153?e=1780531200&v=beta&t=CG1B6CKOSs7dxQ5FiyH15hI_R-atnXYlUK3upFppL-0"
+          alt="User avatar"
+        />
+      </div>
+    </header>
+    <main id="main">
+      <div class="chips-row">
+        <button class="chip active">All</button>
+        <button class="chip">Anime</button>
+        <button class="chip">Fashion</button>
+        <button class="chip">Surrealism</button>
+        <button class="chip">Cyberpunk</button>
+        <button class="chip">Architecture</button>
+        <button class="chip">Nature</button>
+        <button class="chip">Product</button>
+        <button class="chip">Abstract</button>
+        <button class="chip">Portrait</button>
+        <button class="chip">Cinematic</button>
+        <button class="chip">Sci-Fi</button>
+        <button class="chip">Fantasy</button>
+        <button class="chip">3D Render</button>
+        <button class="chip">Minimal</button>
+        <button class="chip">Glassmorphism</button>
+        <button class="chip">Dark Theme</button>
+        <button class="chip">Neon</button>
+        <button class="chip">Typography</button>
+        <button class="chip">Poster Design</button>
+        <button class="chip">Branding</button>
+        <button class="chip">Dashboard UI</button>
+        <button class="chip">Landing Page</button>
+        <button class="chip">Photography</button>
+        <button class="chip">Space Art</button>
+        <button class="chip">Robot Design</button>
+        <button class="chip">Game Art</button>
+        <button class="chip">Luxury</button>
+        <button class="chip">Retro</button>
+        <button class="chip">Vaporwave</button>
+        <button class="chip">Dreamcore</button>
+        <button class="chip">Monochrome</button>
+        <button class="chip">Futuristic</button>
+        <button class="chip">AI Avatar</button>
+        <button class="chip">Web Design</button>
+        <button class="chip">Interior Design</button>
+        <button class="chip">Concept Art</button>
+        <button class="chip">Workspace</button>
+        <button class="chip">Creative Coding</button>
+        <button class="chip">Holographic</button>
+        <button class="chip">Steampunk</button>
+        <button class="chip">Pixar Style</button>
+        <button class="chip">Ghibli Style</button>
+        <button class="chip">Manga</button>
+        <button class="chip">Comic Art</button>
+        <button class="chip">Horror</button>
+        <button class="chip">Environment</button>
+        <button class="chip">Vehicle</button>
+        <button class="chip">AI Wallpaper</button>
+        <button class="chip">Album Cover</button>
+        <button class="chip">Book Cover</button>
+        <button class="chip">YouTube Thumbnail</button>
+        <button class="chip">Social Media</button>
+        <button class="chip">Luxury Car</button>
+        <button class="chip">Wildlife</button>
+        <button class="chip">Ocean</button>
+        <button class="chip">Mountain</button>
+        <button class="chip">Desert</button>
+        <button class="chip">Rainy Mood</button>
+      </div>
+
+      <div class="masonry-grid" id="grid">
+        <div class="masonry-item">
+          <div class="card-wrap">
+            <img
+              class="ar-tall"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5Q0Jg-uLShZHFT6yArblEf9H-5FRQfIBbuUl111OeErxzO40RjVsvSZH6BVuzhxUAqLt0agaRHlnLHxhS22wLGoUFpfCSB38z4XBn-_rNFcACD3RtNaGQ4e7ZsxyV7RnNhaLAbQgDvLyL6c8V4bnkOKkyhNn9PAbtviaKWYiPEjN1cOKg39FXfNCQZLIw1Zd6GAvzsJSlFW0hR6GRgqaDutj7ioWKDDyCVP82SX-lti-AKboLXT1Y8YkuchG9knOPeK5hrnHJZGrK"
+              alt="Neon Samurai Vibe"
+            />
+            <div class="hover-overlay">
+              <button class="save-btn">Save</button>
+              <div class="overlay-bottom">
+                <button class="copy-btn" aria-label="Copy prompt">
+                  <span
+                    class="material-symbols-outlined"
+                    style="font-size: 18px"
+                    >content_copy</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="card-title">Neon Samurai Vibe</div>
+            <div class="card-sub">
+              <span class="card-author">@manga_master</span>
+              <span class="card-badge">Midjourney</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="masonry-item">
+          <div class="card-wrap">
+            <img
+              class="ar-tall"
+              src="https://lh3.googleusercontent.com/aida-public/AB6AXuALqtc77nKJHGV2mEqHBbJgAHzfrMZ7a2N2_Yyn8FduQCSDtOcEwfC0jwQzoXrbmkdDxWzmTJIeWWf8jkvfPOI6wjooPij228iNY8Ez6mJz2QFAMcMwqcr5TVusC9iReWutpM4XpXHAcNIHKyhmHNeTXMIF-FEDjLsdIEEer0_P1QkLR9bKaDkxQC2ks2ytKNQ_4YnxkjuAL8p6jHDQTMM2DxcpgrLH722XOPLZl6EeA7LU67bTXVDALlxKblSUFiMdQgxZNJMP62sc"
+              alt="Neon AI Portrait"
+            />
+            <div class="hover-overlay">
+              <button class="save-btn">Save</button>
+              <div class="overlay-bottom">
+                <button class="copy-btn">
+                  <span
+                    class="material-symbols-outlined"
+                    style="font-size: 18px"
+                    >content_copy</span
+                  >
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="card-meta">
+            <div class="card-title">Neon AI Portrait</div>
+            <div class="card-sub">
+              <span class="card-author">@neon_pulse</span>
+              <span class="card-badge">Midjourney</span>
+            </div>
+          </div>
+        </div>
+
+        
+      </div>
+    </main>
+
+    <button id="fab" aria-label="Create new prompt">
+      <span
+        class="material-symbols-outlined"
+        style="font-variation-settings: &quot;FILL&quot; 1"
+        >add</span
+      >
+    </button>
+
+    <button id="scroll-top" aria-label="Scroll to top">
+      <span class="material-symbols-outlined">arrow_upward</span>
+    </button>
+
+    <nav id="mobile-nav">
+      <a class="mobile-nav-icon active" href="#">
+        <span
+          class="material-symbols-outlined"
+          style="font-variation-settings: &quot;FILL&quot; 1"
+          >home</span
+        >
+      </a>
+      <a class="mobile-nav-icon" href="#">
+        <span class="material-symbols-outlined">explore</span>
+      </a>
+      <a class="mobile-nav-icon" href="#">
+        <span class="material-symbols-outlined">add_circle</span>
+      </a>
+      <a class="mobile-nav-icon" href="#">
+        <span class="material-symbols-outlined">bookmark</span>
+      </a>
+      <a class="mobile-nav-icon" href="#">
+        <img
+          class="mobile-avatar"
+          src="https://lh3.googleusercontent.com/aida-public/AB6AXuCX9hJ7MN3KWQ2C6jJEiti_et_q514yw8XowScIHn3sronPRDf5ck6ym05HU0EoZBhmaccPEf760sEMuLrGnuLZ2rnY2w_9VpzmtTWf85SJDK5TJc7Voei6ZWVTS1I4IKWKr8jSIt41U1UtIjoBZejQTHGzqjLEhlm1WKlKI-RrlWKyBC50fZsVThWOhorUdxIqnt-OxFIeBJ2tsu375feO9fDgSTzZtmziGXdBuVMpwJgOwXPf4_DwUbnm73DmFlJL3_PKck5ndTR0"
+          alt="Avatar"
+        />
+      </a>
+    </nav>
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+
     <script src="/javascripts/feedPage.js"></script>
 </body>
 </html>

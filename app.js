@@ -29,6 +29,10 @@ app.post("/login", (req, res) => {
   console.log(res.body);
 });
 
+app.get("/feed", (req, res) => {
+  res.render("feedPage");
+});
+
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
