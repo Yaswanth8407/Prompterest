@@ -4,6 +4,7 @@ import path from "path";
 import user from "./models/userModel.js";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
+// import cookieParser from "cookie-parser";
 
 const app = express();
 const port = 3000;
@@ -25,31 +26,43 @@ app.get("/showSignup", (req, res) => {
   res.render("signupPage");
 });
 
-app.get("/showLogin", (req, res) => {
+app.get("/showlogin", (req, res) => {
   res.render("loginPage");
 });
 
 app.post("/signup", async (req, res) => {
   try {
-    const hashedPass = await bcrypt.hash("yaswanth0000", 10);
+    const { fullname, username, email, password } = req.body;
+    const hashedPass = await bcrypt.hash(password, 10);
 
     const User = await user.create({
-      fullname: "Mattaparthi Yaswanth",
-      username: "yaswanth0804",
-      email: "mattaparthiyaswanth00@gmail.com",
+      fullname,
+      username,
+      email,
       password: hashedPass,
     });
-    res.send(User);
-    console.log(User);
+    res.redirect("/feed");
   } catch (err) {
     res.send(err);
   }
 });
 
 app.post("/login", async (req, res) => {
-  // console.log(res.body);
-  const User = await user.findOne({ email: "mattaparthiyaswanth00@gmail.com" });
-  res.send(await bcrypt.compare("yaswanth0000", User.password));
+  try {
+    const { username, password } = req.body;
+    const foundUser = await user.findOne({ username });
+    if (!foundUser) {
+      return res.status(401).send("Invalid username or password");
+    }
+    const cmpresult = await bcrypt.compare(password, foundUser.password);
+    if (cmpresult) {
+      res.redirect("/feed");
+    } else {
+      return res.send("invalid username or password");
+    }
+  } catch (err) {
+    res.send(err);
+  }
 });
 
 app.get("/feed", (req, res) => {
