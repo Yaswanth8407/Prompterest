@@ -472,6 +472,7 @@ h3,
   color: #1c1b1b;
   display: -webkit-box;
   -webkit-line-clamp: 2;
+  line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
