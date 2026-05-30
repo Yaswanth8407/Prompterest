@@ -8,10 +8,7 @@ body {
 
 .container {
 
-    /* display: grid;
-    grid-template-columns: 1fr 350px ;
-    gap: 10px; */
-    /* height: 100%; */
+
     display: flex;
     height: 100vh;
 }
@@ -20,7 +17,92 @@ body {
 .img_sec {
 
     width: 50%;
+    background-color: #0e1626;
+    background:
+        linear-gradient(to bottom right, rgba(255, 0, 150, 0.3), transparent 40%),
+        linear-gradient(to bottom right, rgba(255, 0, 150, 0.3), transparent 40%),
+        linear-gradient(to top left, rgba(0, 150, 255, 0.3), transparent 40%),
+        #0f172a;
+
+
 }
+
+
+
+
+.img_head {
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+}
+
+.img_head .head_text {
+
+    color: #f2f3f5;
+    background-color: #141d2f;
+    padding: 10px 20px 10px 20px;
+    margin: 25px 25px 5px;
+    border: 1px solid #3e3e3e;
+    border-radius: 20px;
+    font-size: larger;
+}
+
+.images {
+    display: inline;
+    padding: 0px 40px 10px 40px;
+
+}
+
+
+
+
+
+.img1 {
+
+    height: 290px;
+    width: 250px;
+    border: 1px;
+    border-radius: 20px;
+    justify-content: flex-end;
+    object-fit: cover;
+    margin: 0px 10px 10px 80px;
+}
+
+.img2 {
+
+    height: 250px;
+    width: 250px;
+    border: 1px;
+    border-radius: 20px;
+    justify-content: flex-end;
+    object-fit: cover;
+    margin: 20px 40px 0px 0px;
+}
+
+.img3 {
+
+    height: 290px;
+    width: 250px;
+    border: 1px;
+    border-radius: 20px;
+    justify-content: flex-end;
+    object-fit: cover;
+    margin: 0px 10px 10px  120px;
+}
+
+.img4 {
+
+    height: 200px;
+    width: 250px;
+    border: 1px;
+    border-radius: 20px;
+    justify-content: flex-end;
+    object-fit:cover;
+    margin: 0px 40px 40px 0px;
+}
+
+
 
 .login_sec {
     width: 50%;
@@ -45,18 +127,18 @@ body {
     border: 1px solid #333;
     background-color: #0B1220;
     ;
-    box-shadow: 0 0 50px rgba(2, 84, 207, 0.2);
+    /* box-shadow: 0 0 0px rgba(2, 84, 207, 0.2); */
 
     margin: 0;
-    padding: 0;
+    padding: 15px;
 }
 
-.head h2 {
+.head1 h2 {
     padding: 0;
     margin: 0;
 }
 
-.head {
+.head1 {
 
     color: #f21335;
     margin-bottom: 15px;
@@ -146,13 +228,13 @@ form .text {
     border: 1px solid #3e3e3e;
     color: #f2f3f5;
     cursor: pointer;
-     
+
 
 }
 
-.google_button i{
+.google_button i {
     display: inline-block;
-    
+
     width: 10px;
 }
 
@@ -166,7 +248,7 @@ form .text {
     border: 1px solid #3e3e3e;
     color: #f2f3f5;
     cursor: pointer;
-     
+
 
 
 }
@@ -179,18 +261,18 @@ form .text {
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
-    
+
 
 }
 
-form .text2{
+form .text2 {
 
     color: #ccaab3;
-   
+
 
 }
 
-form .anchor{
+form .anchor {
 
     color: #e693a9;
     cursor: pointer;
