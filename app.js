@@ -102,7 +102,7 @@ app.get("/feed", (req, res) => {
   res.render("feedPage");
 });
 
-app.get("/profile", (req, res) => {
+app.get("/profile", async (req, res) => {
   res.render("profilePage");
 });
 
