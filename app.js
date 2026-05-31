@@ -33,6 +33,12 @@ app.get("/showlogin", (req, res) => {
 app.post("/signup", async (req, res) => {
   try {
     const { fullname, username, email, password } = req.body;
+    // const checkingemail = await user.find({ email });
+    // if (checkingemail) {
+    //   return res.render("signupPage", {
+    //     alert: "User is already registered, try login instead",
+    //   });
+    // }
     const hashedPass = await bcrypt.hash(password, 10);
 
     const User = await user.create({
@@ -43,7 +49,9 @@ app.post("/signup", async (req, res) => {
     });
     res.redirect("/feed");
   } catch (err) {
-    res.send(err);
+    // res.send(err);
+    console.log(err);
+    
   }
 });
 
