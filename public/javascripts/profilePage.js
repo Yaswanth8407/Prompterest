@@ -4,7 +4,7 @@ const toggleIcon = document.getElementById("toggle-icon");
 function applyTheme(theme) {
   document.documentElement.setAttribute("data-theme", theme);
   if (toggleIcon) {
-    toggleIcon.textContent = theme === "dark" ? "light_mode" : "wb_sunny";
+    toggleIcon.textContent = theme === "dark" ? "dark_mode" : "wb_sunny";
   }
   try {
     localStorage.setItem("prest-theme", theme);
@@ -23,7 +23,7 @@ if (themeToggleBtn) {
 (function syncIcon() {
   const theme = document.documentElement.getAttribute("data-theme") || "light";
   if (toggleIcon) {
-    toggleIcon.textContent = theme === "dark" ? "light_mode" : "dark_mode";
+    toggleIcon.textContent = theme === "dark" ? "dark_mode" : "wb_sunny";
   }
 })();
 
