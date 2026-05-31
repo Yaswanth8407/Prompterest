@@ -23,7 +23,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/showSignup", (req, res) => {
-  res.render("signupPage");
+  res.render("signupPage", { formData: {} });
 });
 
 app.get("/showlogin", (req, res) => {
@@ -31,12 +31,17 @@ app.get("/showlogin", (req, res) => {
 });
 
 app.post("/signup", async (req, res) => {
+  const { fullname, username, email, password } = req.body;
   try {
-    const { fullname, username, email, password } = req.body;
-
     if (!password || password.length < 8) {
       return res.render("signupPage", {
         alert: "Password must be atleast 8 characters long",
+        formData: {
+          fullname,
+          username,
+          email,
+          password,
+        },
       });
     }
 
@@ -53,10 +58,25 @@ app.post("/signup", async (req, res) => {
   } catch (err) {
     if (err.name === "ValidationError") {
       const errorMsg = Object.values(err.errors)[0].message;
-      return res.render("signupPage", { alert: errorMsg });
+      return res.render("signupPage", {
+        alert: errorMsg,
+        formData: {
+          fullname,
+          username,
+          email,
+        },
+      });
     }
 
-    return res.render("signupPage", { alert: err.message });
+    return res.render("signupPage", {
+      alert: err.message,
+      formData: {
+        fullname,
+        username,
+        email,
+        password,
+      },
+    });
   }
 });
 

@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Prompterest | Sign up</title>
     <link rel="stylesheet" href="/stylesheets/signupPage.css">
 </head>
 <body>
     <div class="body">
         <div class="left">
-            <div class="glow-red"></div>
             <div class="grid">
-                <div class="g1"><img src="https://i.pinimg.com/736x/41/56/17/4156177df4eca74dbe655544b255374d.jpg" alt="" /></div>
-                <div class="g2"><img src="cyber02.jpeg" alt="" /></div>
-                <div class="g3"><img src="cyber03.jpeg" alt="" /></div>
+                <div class="g1"><img src="images/img2.jpg" alt="" /></div>
+                <div class="g2"><img src="https://i.pinimg.com/736x/41/56/17/4156177df4eca74dbe655544b255374d.jpg" alt="" /></div>
+                <div class="g3"><img src="images/img4.jpg" alt="" /></div>
             </div>
             <div class="tagline">
                 <h2>Discover the<br><span>Impossible.</span></h2>
@@ -36,7 +35,8 @@
                                 <circle cx="12" cy="8" r="4" />
                                 <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7" />
                             </svg></span>
-                        <input type="text" placeholder="Your Name" name="fullname"/>
+                        <input type="text" placeholder="Your Name" name="fullname"
+                            value="<%= formData?.fullname || '' %>"/>
                     </div>
                 </div>
 
@@ -44,7 +44,8 @@
                     <label>Username</label>
                     <div class="iw">
                         <span class="ico" style="font-size:15px;font-weight:700;font-family:Sora,sans-serif;">@</span>
-                        <input type="text" placeholder="prompt_master_69" name="username" />
+                        <input type="text" placeholder="prompt_master_69" name="username" 
+                        value="<%= formData?.username || '' %>"/>
                     </div>
                 </div>
 
@@ -56,7 +57,8 @@
                                 <rect x="2" y="4" width="20" height="16" rx="2" />
                                 <path d="m2 7 10 7 10-7" />
                             </svg></span>
-                        <input type="email" placeholder="name@example.com" name="email" />
+                        <input type="email" placeholder="name@example.com" name="email" 
+                        value="<%= formData?.email || '' %>"/>
                     </div>
                 </div>
 
@@ -68,9 +70,14 @@
                                 <rect x="3" y="11" width="18" height="11" rx="2" />
                               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
                             </svg></span>
-                        <input type="password" placeholder="••••••••" name="password" />
+                        <input type="password" placeholder="••••••••" name="password" 
+                        value="<%= formData?.password || '' %>"/>
                     </div>
                 </div>
+
+                <% if (typeof alert !== 'undefined' && alert) { %>
+                    <p class="error"><%= alert %></p>
+                <% } %>
 
                 <button class="btn-main" type="submit">Create Account</button>
 
