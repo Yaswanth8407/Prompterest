@@ -4,7 +4,6 @@ import path from "path";
 import user from "./models/userModel.js";
 import dotenv from "dotenv";
 import bcrypt from "bcrypt";
-// import cookieParser from "cookie-parser";
 
 const app = express();
 const port = 3000;
