@@ -126,6 +126,10 @@ app.get("/profile", async (req, res) => {
   res.render("profilePage");
 });
 
+app.get("/addPost", (req, res) => {
+  res.render("addPost");
+});
+
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });

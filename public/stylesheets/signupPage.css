@@ -1,63 +1,83 @@
+/* ══════════════════════════════════════════
+   BASE RESET
+══════════════════════════════════════════ */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-.error{
-  color: #FF3B5C;
-  font-size: 0.7rem;
-  padding-left: 5px;
-}
-
 html,
 body {
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background: #0d1117;
   font-family: "Segoe UI", sans-serif;
-  overflow: hidden;
 }
 
+.error {
+  color: #ff3b5c;
+  font-size: 0.7rem;
+  padding-left: 5px;
+  margin-bottom: 8px;
+  display: block;
+}
+
+/* ══════════════════════════════════════════
+   LAYOUT — two columns side by side
+══════════════════════════════════════════ */
 .body {
   display: flex;
   width: 100%;
-  height: 100%;
+  min-height: 100vh;
 }
 
-/* ── Left side ── */
+/* ══════════════════════════════════════════
+   LEFT PANEL — image collage
+══════════════════════════════════════════ */
 .left {
-  display: flex;
   flex: 0.9;
-  padding: 20px;
-  background: #111827;
   position: relative;
   overflow: hidden;
+  display: flex;
   align-items: center;
   justify-content: center;
   background:
     linear-gradient(to bottom right, rgba(255, 0, 150, 0.3), transparent 40%),
-    linear-gradient(to bottom right, rgba(255, 0, 150, 0.3), transparent 40%),
     linear-gradient(to top left, rgba(0, 150, 255, 0.3), transparent 40%),
     #0f172a;
 }
+
+/* Dark overlay so tagline reads cleanly */
+.left::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.65) 30%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* ── Image grid ── */
 .grid {
   display: flex;
   gap: 10px;
   width: 100%;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
   align-items: center;
   justify-content: center;
+  padding: 20px;
+  position: relative;
+  z-index: 0;
 }
 
 .grid div {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 10px;
+  border-radius: 14px;
   overflow: hidden;
   background: #1f2937;
-  height: 92%;
+  flex: 1;
+  height: 90%;
 }
 
 .grid div img {
@@ -67,20 +87,12 @@ body {
   display: block;
 }
 
-/* ── Tagline overlaid on grid ── */
+/* ── Tagline ── */
 .tagline {
   position: absolute;
   bottom: 36px;
   left: 28px;
-  z-index: 3;
-}
-
-.tagline::before {
-  content: "";
-  position: absolute;
-  inset: -40px -20px -20px -28px;
-  z-index: -1;
-  pointer-events: none;
+  z-index: 2;
 }
 
 .tagline h2 {
@@ -100,25 +112,27 @@ body {
   margin-top: 8px;
 }
 
-/* ── Right Panel ── */
+/* ══════════════════════════════════════════
+   RIGHT PANEL — signup form
+══════════════════════════════════════════ */
 .right {
   flex: 1;
-  height: 100vh;
-  background: #161b242e;
+  min-height: 100vh;
+  background: #0d1117;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 40px 20px;
 }
 
 .R {
   width: 100%;
   max-width: 380px;
-  /* height: 93%; */
-  padding:20px;
+  padding: 28px 24px;
   border-radius: 20px;
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.171);
-  box-shadow: 0 0 110px #01000efe;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 80px rgba(1, 0, 14, 0.9);
 }
 
 .fb {
@@ -127,7 +141,7 @@ body {
 
 .brand {
   color: #ff3b5c;
-  font-size: 32px;
+  font-size: 30px;
   font-weight: 700;
   text-align: center;
   letter-spacing: 0.5px;
@@ -136,29 +150,31 @@ body {
 
 .ftitle {
   color: #ffffff;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: 600;
   text-align: center;
 }
 
 .fsub {
   color: #6b7280;
-  font-size: 13px;
+  font-size: 12px;
   text-align: center;
   margin-top: 4px;
-  margin-bottom: 15px;
+  margin-bottom: 18px;
 }
 
-/* ── Form Fields ── */
+/* ── Fields ── */
 .fld {
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .fld label {
   display: block;
   color: #9ca3af;
-  font-size: 12px;
-  margin-bottom: 3px;
+  font-size: 11px;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
 }
 
 .iw {
@@ -166,15 +182,17 @@ body {
   align-items: center;
   background: #1e2533;
   border: 1px solid #2d3748;
-  border-radius: 18px;
+  border-radius: 14px;
   padding: 0 14px;
   gap: 10px;
-  transition: border-color 0.2s;
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
 }
 
 .iw:focus-within {
   border-color: #ff3b5c;
-  box-shadow: 0 0 0 2px rgba(255, 59, 92, 0.12);
+  box-shadow: 0 0 0 3px rgba(255, 59, 92, 0.12);
 }
 
 .ico {
@@ -191,7 +209,7 @@ body {
   outline: none;
   color: #e5e7eb;
   font-size: 14px;
-  padding: 13px 0;
+  padding: 12px 0;
   font-family: inherit;
 }
 
@@ -199,18 +217,18 @@ body {
   color: #4b5563;
 }
 
-/* ── Button ── */
+/* ── Submit button ── */
 .btn-main {
   width: 100%;
   background: #ff3b5c;
-  color: #ffffff;
+  color: #fff;
   border: none;
-  border-radius: 20px;
+  border-radius: 14px;
   padding: 13px;
   font-size: 15px;
   font-weight: 600;
   cursor: pointer;
-  margin-top: 4px;
+  margin-top: 6px;
   font-family: inherit;
   transition:
     background 0.2s,
@@ -220,7 +238,6 @@ body {
 .btn-main:hover {
   background: #e5284a;
 }
-
 .btn-main:active {
   transform: scale(0.98);
 }
@@ -230,7 +247,7 @@ body {
   color: #4b5563;
   font-size: 11px;
   text-align: center;
-  margin: 18px 0;
+  margin: 16px 0;
   position: relative;
   text-transform: uppercase;
   letter-spacing: 0.8px;
@@ -253,52 +270,7 @@ body {
   right: 0;
 }
 
-/* ── Social Buttons ── */
-.social-btns {
-  display: flex;
-  gap: 10px;
-}
-
-.social-btn {
-  flex: 1;
-  background: transparent;
-  border: 1px solid #2d3748;
-  border-radius: 20px;
-  padding: 11px 8px;
-  color: #e5e7eb;
-  font-size: 13px;
-  cursor: pointer;
-  font-family: inherit;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  transition:
-    border-color 0.2s,
-}
-
-.social-btn:hover {
-  background: #1e2533;
-  border-color: #4b5563;
-}
-
-/* ── Login Link ── */
-.login-link {
-  text-align: center;
-  font-size: 12px;
-  color: #6b7280;
-  margin-top: 18px;
-}
-
-.login-link a {
-  color: #ff3b5c;
-  text-decoration: none;
-  font-weight: 500;
-}
-
-.login-link a:hover {
-  text-decoration: underline;
-}
+/* ── Social buttons ── */
 .soc {
   display: flex;
   gap: 10px;
@@ -306,7 +278,7 @@ body {
 
 .sbtn {
   flex: 1;
-  border-radius: 20px;
+  border-radius: 14px;
   padding: 10px 8px;
   font-size: 13px;
   font-weight: 600;
@@ -315,25 +287,30 @@ body {
   align-items: center;
   justify-content: center;
   gap: 7px;
-  font-family: "Inter", sans-serif;
+  font-family: inherit;
+  background: transparent;
+  border: 1px solid #2d3748;
+  color: #e5e7eb;
   transition:
-    opacity 0.2s,
+    background 0.2s,
+    border-color 0.2s,
     transform 0.1s;
 }
 
 .sbtn:hover {
-  opacity: 0.8;
+  background: #1e2533;
+  border-color: #4b5563;
 }
-
 .sbtn:active {
   transform: scale(0.97);
 }
 
+/* ── Bottom link ── */
 .blink {
-  color: #d1d5db;
+  color: #6b7280;
   text-align: center;
-  font-size: 12.5px;
-  margin-top: 18px;
+  font-size: 12px;
+  margin-top: 16px;
 }
 
 .blink a {
@@ -344,4 +321,174 @@ body {
 
 .blink a:hover {
   text-decoration: underline;
+}
+
+/* ══════════════════════════════════════════════════════════
+   RESPONSIVE
+   ─────────────────────────────────────────────────────────
+   DESKTOP  (> 1024px) : side by side, images full height
+   TABLET   (≤ 1024px) : side by side, images slightly smaller
+   TABLET S (≤ 860px)  : STACK — images become a TOP MOSAIC
+                          3 cards visible, horizontal, fixed height
+   MOBILE   (≤ 520px)  : images smaller strip, form tighter
+   MOBILE S (≤ 380px)  : social buttons stack vertically
+══════════════════════════════════════════════════════════ */
+
+/* ── Tablet: shrink left panel slightly ── */
+@media (max-width: 1024px) {
+  .left {
+    flex: 0.75;
+  }
+  .tagline h2 {
+    font-size: 26px;
+  }
+}
+
+/* ── Tablet portrait: VERTICAL STACK ── */
+@media (max-width: 860px) {
+  html,
+  body {
+    height: auto;
+    overflow-y: auto;
+  }
+
+  .body {
+    flex-direction: column;
+    min-height: 100vh;
+    height: auto;
+  }
+
+  /* ── Left becomes a top image mosaic strip ── */
+  .left {
+    flex: none;
+    width: 100%;
+    height: 260px; /* fixed comfortable height */
+    min-height: 260px;
+    padding: 16px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Override the full-height min-height on grid */
+  .grid {
+    min-height: unset;
+    height: 100%;
+    padding: 0;
+    gap: 8px;
+    align-items: stretch;
+  }
+
+  /* Each image card: equal flex columns */
+  .grid div {
+    flex: 1;
+    height: 100%; /* fills the 260px strip */
+    border-radius: 12px;
+    min-width: 0; /* prevent overflow */
+  }
+
+  /* Tagline sits bottom-left inside the strip */
+  .tagline {
+    bottom: 16px;
+    left: 16px;
+  }
+
+  .tagline h2 {
+    font-size: 22px;
+  }
+  .tagline p {
+    font-size: 11px;
+    margin-top: 4px;
+  }
+
+  /* ── Right fills remaining space ── */
+  .right {
+    flex: none;
+    width: 100%;
+    min-height: calc(100vh - 260px);
+    padding: 28px 20px 48px;
+    align-items: flex-start;
+  }
+
+  .R {
+    max-width: 500px;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.4);
+  }
+}
+
+/* ── Mobile ── */
+@media (max-width: 520px) {
+  .left {
+    height: 200px;
+    min-height: 200px;
+  }
+
+  .grid {
+    gap: 6px;
+  }
+
+  .grid div {
+    border-radius: 10px;
+  }
+
+  .tagline h2 {
+    font-size: 19px;
+  }
+  .tagline p {
+    display: none;
+  }
+
+  .right {
+    min-height: calc(100vh - 200px);
+    padding: 22px 14px 40px;
+  }
+
+  .R {
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .brand {
+    font-size: 26px;
+  }
+  .ftitle {
+    font-size: 15px;
+  }
+  .fsub {
+    font-size: 11px;
+  }
+
+  .iw input {
+    font-size: 13px;
+    padding: 11px 0;
+  }
+  .btn-main {
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+
+/* ── Very small phones ── */
+@media (max-width: 380px) {
+  .left {
+    height: 170px;
+    min-height: 170px;
+  }
+
+  .right {
+    min-height: calc(100vh - 170px);
+  }
+
+  /* Stack social buttons vertically */
+  .soc {
+    flex-direction: column;
+  }
+
+  .sbtn {
+    width: 100%;
+    padding: 11px;
+  }
+
+  .R {
+    padding: 16px 12px;
+  }
 }

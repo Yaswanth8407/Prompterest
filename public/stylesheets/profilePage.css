@@ -172,6 +172,7 @@ h3 {
 #sidebar:hover .nav-icon:hover {
   transform: none !important;
   background: #e60023;
+  color: #e60023;
 }
 
 #sidebar:hover .nav-icon.active,
