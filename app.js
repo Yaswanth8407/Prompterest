@@ -108,3 +108,7 @@ app.get("/profile", async (req, res) => {
 app.listen(port, () => {
   console.log(`Server running on ${port}`);
 });
+
+app.get("/addPost", (req, res) => {
+  res.render("addPost");
+});

@@ -1,13 +1,21 @@
+"use strict";
+
+
 const themeToggleBtn = document.getElementById("themeToggle");
 const toggleIcon = document.getElementById("toggle-icon");
 
 function applyTheme(theme) {
-  document.documentElement.setAttribute("data-theme", theme);
+  // Normalise: accept "dark"/"light" string OR boolean
+  const isDark = theme === "dark" || theme === true;
+  const resolved = isDark ? "dark" : "light";
+
+  document.documentElement.setAttribute("data-theme", resolved);
+
   if (toggleIcon) {
-    toggleIcon.textContent = theme === "dark" ? "dark_mode" : "wb_sunny";
+    toggleIcon.textContent = isDark ? "dark_mode" : "wb_sunny";
   }
   try {
-    localStorage.setItem("prest-theme", theme);
+    localStorage.setItem("prest-theme", resolved);
   } catch (_) {}
 }
 
@@ -20,6 +28,17 @@ if (themeToggleBtn) {
   themeToggleBtn.addEventListener("click", toggleTheme);
 }
 
+
+(function initTheme() {
+  let saved;
+  try {
+    saved = localStorage.getItem("prest-theme");
+  } catch (_) {}
+  const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+  applyTheme(saved || (prefersDark ? "dark" : "light"));
+})();
+
+// Sync icon immediately after DOM attribute is set
 (function syncIcon() {
   const theme = document.documentElement.getAttribute("data-theme") || "light";
   if (toggleIcon) {
@@ -27,9 +46,21 @@ if (themeToggleBtn) {
   }
 })();
 
-(function () {
+// ★ KEY ADDITION — Listen for theme changes made on PAGE 1 (or any other tab)
+// The `storage` event fires on all OTHER open tabs when localStorage changes.
+
+
+window.addEventListener("storage", (e) => {
+  if (e.key === "prest-theme" && e.newValue) {
+    applyTheme(e.newValue); // e.newValue is "dark" or "light"
+  }
+});
+
+
+(function initScrollReveal() {
   const items = document.querySelectorAll(".masonry-item");
   if (!items.length) return;
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
@@ -41,11 +72,14 @@ if (themeToggleBtn) {
     },
     { threshold: 0.06 },
   );
+
   items.forEach((el, i) => {
     el.style.transitionDelay = `${i * 0.06}s`;
     observer.observe(el);
   });
 })();
+
+///nav bar ke  icon ke leya//
 
 document.querySelectorAll(".nav-icon").forEach((icon) => {
   icon.addEventListener("click", (e) => {
@@ -67,6 +101,8 @@ document.querySelectorAll(".mobile-nav-icon").forEach((icon) => {
   });
 });
 
+
+
 document.querySelectorAll(".tab-link").forEach((tab) => {
   tab.addEventListener("click", (e) => {
     e.preventDefault();
@@ -76,6 +112,8 @@ document.querySelectorAll(".tab-link").forEach((tab) => {
     tab.classList.add("active");
   });
 });
+
+
 
 const toast = document.getElementById("toast");
 let toastTimeout;
@@ -87,6 +125,8 @@ function showToast(msg) {
   clearTimeout(toastTimeout);
   toastTimeout = setTimeout(() => toast.classList.remove("show"), 2400);
 }
+
+
 
 document.querySelectorAll(".btn-copy-prompt").forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -101,6 +141,8 @@ document.querySelectorAll(".btn-copy-prompt").forEach((btn) => {
   });
 });
 
+/// header section ke leya//
+
 const header = document.getElementById("header");
 window.addEventListener(
   "scroll",
@@ -111,6 +153,8 @@ window.addEventListener(
   },
   { passive: true },
 );
+
+// save bitton ka leya//
 
 document.querySelectorAll(".btn-save").forEach((btn) => {
   btn.addEventListener("click", (e) => {
@@ -128,6 +172,8 @@ document.querySelectorAll(".btn-save").forEach((btn) => {
   });
 });
 
+// follower button ka leya//
+
 const followBtn = document.getElementById("followBtn");
 if (followBtn) {
   let following = false;
@@ -144,12 +190,16 @@ if (followBtn) {
   });
 }
 
+
+
 const fab = document.getElementById("fab");
 if (fab) {
   fab.addEventListener("click", () => {
     showToast("Create new prompt — coming soon!");
   });
 }
+
+//Nav bar ke leya//
 
 const tabsNav = document.getElementById("tabs-nav");
 window.addEventListener(
@@ -162,6 +212,8 @@ window.addEventListener(
   },
   { passive: true },
 );
+
+
 
 const scrollTop = document.getElementById("scroll-top");
 if (scrollTop) {
