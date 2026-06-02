@@ -29,6 +29,9 @@ app.get("/showSignup", (req, res) => {
 });
 
 app.get("/showlogin", (req, res) => {
+  if(req.cookies.PrompterestAuthToken){
+    return res.redirect("/feed")
+  }
   res.render("loginPage");
 });
 
@@ -109,7 +112,25 @@ app.post("/login", async (req, res) => {
     }
     const cmpresult = await bcrypt.compare(password, foundUser.password);
     if (cmpresult) {
-      res.redirect("/feed");
+    const token = jwt.sign(
+      {
+        username:foundUser.username,
+        email:foundUser.email,
+      },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "7d",
+      },
+    );
+
+    res.cookie("PrompterestAuthToken", token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 604800000,
+    });
+
+    res.redirect("/feed");
     } else {
       return res.send("invalid username or password");
     }
@@ -123,7 +144,14 @@ app.get("/feed", (req, res) => {
 });
 
 app.get("/profile", async (req, res) => {
-  res.render("profilePage");
+  try{
+    const foundUsername = jwt.verify(req.cookies.PrompterestAuthToken,process.env.JWT_SECRET).username;
+    const foundCredentials = await user.findOne({username:foundUsername})
+    res.render("profilePage",{foundCredentials})
+  }
+  catch(err){
+    console.log(err)
+  }
 });
 
 app.get("/addPost", (req, res) => {

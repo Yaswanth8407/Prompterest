@@ -33,7 +33,7 @@
     <aside id="sidebar">
       <div class="logo">P</div>
       <nav class="sidebar-nav">
-        <a class="nav-icon active" href="#" data-tip="Home">
+        <a class="nav-icon active" href="/feed" data-tip="Home">
           <span
             class="material-symbols-outlined"
             style="font-variation-settings: &quot;FILL&quot; 1"
@@ -45,7 +45,7 @@
           <span class="material-symbols-outlined">explore</span>
           <span class="nav-label">Explore</span>
         </a>
-        <a class="nav-icon" href="#" data-tip="Create">
+        <a class="nav-icon" href="/addPost" data-tip="Create">
           <span class="material-symbols-outlined">add_circle</span>
           <span class="nav-label">Create</span>
         </a>
@@ -151,8 +151,8 @@
                 <div class="online-dot"></div>
               </div>
               <div class="profile-bio">
-                <h1 class="profile-name">Sandesh Narkar</h1>
-                <p class="profile-handle">@prompt_architect</p>
+                <h1 class="profile-name"><%= foundCredentials.fullname %></h1>
+                <p class="profile-handle"><%= foundCredentials.username %></p>
                 <div class="profile-tags">
                   <span class="badge-role">AI Artist &amp; Designer</span>
                   <span class="profile-location">

@@ -1,390 +1,575 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prompterest – Discover AI Prompts That Actually Work</title>
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/landingPage.css">
-</head>
-<body>
-<nav>
-  <div class="nav-left">
-    <a href="#" class="logo">Prompterest</a>
-    <ul class="nav-links">
-      <li><a href="#" class="active">Discover</a></li>
-      <li><a href="#">Trending</a></li>
-      <li><a href="#">Creators</a></li>
-      <li><a href="#">Community</a></li>
-    </ul>
-  </div>
-  <div class="nav-right">
-<label class="theme-switch">
-    <input type="checkbox" id="themeToggle">
-    <span class="slider"></span>
-</label>    <!-- <div class="theme-toggle"> -->
-      <!-- <div class="theme-dot" style="background:#e8e8f0;font-size:9px">☀</div> -->
-       <!-- <button class="light">☀️</button> -->
-       <!-- <button class="dark">🌙</button> -->
-      <!-- <div class="theme-dot dark" style="font-size:9px">🌙</div> -->
-    <!-- </div> -->
-    <a href="#" class="btn-login">Log In</a>
-    <a href="#" class="btn-red">+ Create</a>
-  </div>
-</nav>
-
-<section class="hero">
-  <h1>DISCOVER AI<br>PROMPTS <span class="red">THAT</span><br><span class="red">ACTUALLY WORK</span></h1>
-  <p class="hero-sub">The world's first precision-engineered prompt gallery for Midjourney, DALL·E 3, and Stable Diffusion creators.</p>
-
-  <div class="search-wrap">
-    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-    <input type="text" placeholder="Search for 'Cinematic Mars' or 'Isometric Glass Architecture'...">
-    <button class="btn-search">Search</button>
-  </div>
-
-  <div class="tag-row">
-    <span class="tags active">POPULAR:-</span>
-    <span class="tag-pill">#Hyperrealistic</span>
-    <span class="tag-pill">#cyberpunk</span>
-    <span class="tag-pill">#Architectural</span>
-  </div>
-</section>
-
-<div class="categories">
-  <div class="cat-item">
-    <div class="cat-thumb char">
-      <div class="cat-thumb-inner"><img src="https://imgs.search.brave.com/wNOWnTHVPCSIBS2U1UzdSZxGuiT6wnGQ-GzhAJ5B-Y4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly8xNDc0/ODk5MjMxLnJzYy5j/ZG43Ny5vcmcvYXBp/L2ctd2FsbHBhcGVy/LWltYWdlLzIwMC80/MjAvN2E4YmYzYWU0/MmY2YWE4NDg0MzEx/MjA0YTc1ZGNlZjY3/MTIwOWE0NGY0MTE2/ZTgzMzRjYjM2NTIy/YTRlZTkxMGIwNGY3/N2E3NDZhZjkzM2Jk/ZTg3NmExZGVhZTNk/M2E5OWNjYWY4MjRk/MzUyN2E1NTAxOTFh/NjEwMDBkODJlMjE4/N2ZjMGFiYjA4ZjRk/Y2I4MDVlNmU3MTlm/N2RlYjJhYTIzNjQw/NTE2ZGIxZTdkLndl/YnA" alt=""></div>
-    </div>
-    <span class="cat-label">Characters</span>
-  </div>
-  <div class="cat-item">
-    <div class="cat-thumb env">
-      <div class="cat-thumb-inner"><img src="https://imgs.search.brave.com/dvZ15TRbfCYGcy37lOeG4633145AgpL-NCvIbLX06L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly8xNDc0/ODk5MjMxLnJzYy5j/ZG43Ny5vcmcvYXBp/L2Mtd2FsbHBhcGVy/LWltYWdlLzIwMC80/MjAvNzk4Y2YxYWI1/NmY3YWE5MjhhMzIw/MjBkZTAzM2RmYWYy/MzJlY2I3ZWE0Mjc3/Mjk0MjI5MjZlMDA2/ZDM1ODcwZWVhMDYy/OC53ZWJw" alt=""></div>
-    </div>
-    <span class="cat-label">Environment</span>
-  </div>
-  <div class="cat-item">
-    <div class="cat-thumb tech">
-      <div class="cat-thumb-inner"><img src="https://imgs.search.brave.com/n9qz5vQypSj4gYBJZwgY9ehckl_nOCnlN0S2GHqEYsM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50LnBleGVscy5j/b20vYWlnYy1idW5k/bGUvaW1hZ2VzLzFi/NWUwZDZmLWNiZTMt/NDE1OC1hNzNlLTQ3/OTg2NWRhMDRmOS5q/cGc" alt=""></div>
-    </div>
-    <span class="cat-label">Technical</span>
-  </div>
-  <div class="cat-item">
-    <div class="cat-thumb ill">
-      <div class="cat-thumb-inner"><img src="https://www.livewallpapers.com/uploads/lw_categories/files/images/67d8204754a85_animals-wallpaper.jpg" alt=""></div>
-    </div>
-    <span class="cat-label">Illustration</span>
-  </div>
-  <div class="cat-item">
-    <div class="cat-thumb cin">
-      <div class="cat-thumb-inner"><img src="https://imgs.search.brave.com/ZUGX-Y8wIrXvltklA9-UV0t5VcipAMQIYbuL7O27K0w/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzY0/NTU2NDkvcGV4ZWxz/LXBob3RvLTM2NDU1/NjQ5L2ZyZWUtcGhv/dG8tb2YtZHJhbWF0/aWMtc2lsaG91ZXR0/ZS1vZi1hLW1hbi1p/bi1ldmVuaW5nLWxp/Z2h0LmpwZWc_YXV0/bz1jb21wcmVzcyZj/cz10aW55c3JnYiZk/cHI9MSZ3PTUwMA" alt=""></div>
-    </div>
-    <span class="cat-label">Cinematic</span>
-  </div>
-  <div class="cat-item">
-    <div class="cat-thumb uiux">
-      <div class="cat-thumb-inner"><img src="https://imgs.search.brave.com/KmXcdP7jTUfCKRu2qCViO0Oav-HU-DTXRWneG1s4w8Q/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L2ZyZWUtdmVjdG9y/L2dyYWRpZW50LXVp/LXV4LWJhY2tncm91/bmQtaWxsdXN0cmF0/ZWRfMjMtMjE0OTA1/MDE4Mi5qcGc_c2Vt/dD1haXNfaHlicmlk/Jnc9NzQwJnE9ODA" alt=""></div>
-    </div>
-    <span class="cat-label">UI/UX</span>
-  </div>
-</div>
-
-<div class="what-section">
-  <h2>WHAT ARE YOU BUILDING TODAY?</h2>
-</div>
-<section class="section">
-  <div class="section-header">
-    <div class="section-title-block">
-      <div class="section-title">TRENDING PROMPTS THIS HOUR</div>
-      <div class="section-subtitle">Highly accurate prompts currently generating buzz.</div>
-    </div>
-    <a href="#" class="view-all">View All →</a>
-  </div>
-
-
-
-  <div class="masonry">
-    <div class="card">
-      <div class="fake-img g1" style="height:220px;">
-        <div class="noise"></div>
-        <div style="font-size:60px;position:relative;z-index:1;opacity:0.7">
-            <img src="https://picsum.photos/600/900?3" alt="">
-        </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prompterest – Discover AI Prompts That Actually Work</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/landingPage.css" />
+  </head>
+  <body>
+    <nav>
+      <div class="nav-left">
+        <a href="#" class="logo">Prompterest</a>
+        <ul class="nav-links">
+          <li><a href="#" class="active">Discover</a></li>
+          <li><a href="#">Trending</a></li>
+          <li><a href="#">Creators</a></li>
+          <li><a href="#">Community</a></li>
+        </ul>
       </div>
-      <span class="card-badge">Photorealistic</span>
-      <span class="card-badge2">3.6</span>
-      <div class="card-overlay" style="position:relative;background:none;padding:10px 10px 10px;">
-        <div class="card-title" style="color:#ddd">"Lone astronaut standing on the edge of a Martian..."</div>
-        <div class="card-source" style="color:#666">Stable Diffusion XL</div>
+      <div class="nav-right">
+        <label class="theme-switch">
+          <input type="checkbox" id="themeToggle" />
+          <span class="slider"></span>
+        </label>
+        <!-- <div class="theme-toggle"> -->
+        <!-- <div class="theme-dot" style="background:#e8e8f0;font-size:9px">☀</div> -->
+        <!-- <button class="light">☀️</button> -->
+        <!-- <button class="dark">🌙</button> -->
+        <!-- <div class="theme-dot dark" style="font-size:9px">🌙</div> -->
+        <!-- </div> -->
+        <a href="/showlogin" class="btn-login">Log In</a>
+        <a href="#" class="btn-red">+ Create</a>
       </div>
-    </div>
+    </nav>
 
+    <section class="hero">
+      <h1>
+        DISCOVER AI<br />PROMPTS <span class="red">THAT</span><br /><span
+          class="red"
+          >ACTUALLY WORK</span
+        >
+      </h1>
+      <p class="hero-sub">
+        The world's first precision-engineered prompt gallery for Midjourney,
+        DALL·E 3, and Stable Diffusion creators.
+      </p>
 
-
-    <div class="card">
-      <div style="padding:14px 12px 8px;">
-        <div class="card-prompt">"Organic glass structures, iridescent textures,..."</div>
+      <div class="search-wrap">
+        <svg
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input
+          type="text"
+          placeholder="Search for 'Cinematic Mars' or 'Isometric Glass Architecture'..."
+        />
+        <button class="btn-search">Search</button>
       </div>
-      <div class="card-prompt-footer">
-        <div class="likes">
-          <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
-          3.4k likes
-        </div>
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:#666"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+
+      <div class="tag-row">
+        <span class="tags active">POPULAR:-</span>
+        <span class="tag-pill">#Hyperrealistic</span>
+        <span class="tag-pill">#cyberpunk</span>
+        <span class="tag-pill">#Architectural</span>
       </div>
-    </div>
+    </section>
 
-
-
-    <div class="card">
-      <div class="fake-img g3" style="height:180px;">
-        <div class="noise"></div>
-        <div style="font-size:55px;position:relative;z-index:1;opacity:0.75">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5oQLtbEMBSEyjNkZ83o30oknM2e6S6jG8_LvKcWyharetgdPn6QXtG39hMv3GWQdvjNia1T44b57dRwuh4a9UxZZEO92OJ4nz0TsZrAHlTvvZcnvEoZjJ7DpO3WERMe_bPH85dEYUJk768fYvmuXDJN2UVrVUpTfZV1YhgawQPRp0mtnguFlQjVsbql-8xmXKA6kjIlMoHpaHSwfK9vRb-rP3F5QGbT2rv5jHidCmy3Mw_EzrM-bZkFZ-bBVNHR5_kmRfONRtLnLn" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Abstract Flow State</div>
-        <div class="card-source">DALL·E 3</div>
-      </div>
-    </div>
-
-
-
-
-    <div class="card">
-      <div class="fake-img g4" style="height:170px;">
-        <div class="noise"></div>
-        <div style="font-size:50px;position:relative;z-index:1;opacity:0.75">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuD38kALEa3n4Dek1LgcOMDWCWeHgTZQ8S9iiruqLr81T-aXmdrbfCtl7sBWfF9-Z67DQGGCEKdm682F4iD9vZhKB8xElY9Boid5FojLv1g_ZL2CbWQOfFf_96Xo-C16FjJ-nn-Fm3H_TST0Ng2Jz8COwKFx-pZzv2kQIl-qOWC6FeH01pZExzHQHAjF8SFfvimYkh4bm4DBmwy3IeetAOmGi_q0hNd9NuOLunKMogwk_ugpI16OGA07HU9Xb-WbgB1mtlSw9SMVLqko" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">"Utopian cityscape, solarpunk aesthetic, lush..."</div>
-      </div>
-      <button class="copy-btn">Copy Prompt</button>
-    </div>
-
-
-
-    <div class="card">
-      <div class="fake-img g5" style="height:175px;">
-        <div class="noise"></div>
-        <div style="font-size:52px;position:relative;z-index:1;opacity:0.8">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAH2FfrpYfzUn5ou6EUQu1rYojgSN5_vPI4UhX1Wr0653vN3Ab8l6Bu2hheF7_iYXgT6TFEh4BxmWCRCR24ODpmpLF8NiCd-IMuwFAe3aGSd7asKcOayVKy7tScVxGYk3Z2NzdXcwsd53vLhpv4VIx2c3YNB53nQ5EdvdoDWJ4VC4CV82wjQxf9bzBOjU_x5DnM4XuhhHbnUfXY1vfWtgS8NnVQcTjTnLvde5G36i5rVz9h-s66LgD8tzcD7uWYk2SJGrxPnGVKugx" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Cybernetic Neural Matrix</div>
-        <div class="card-source">on the edge of a Digital...</div>
-      </div>
-    </div>
-
-
-
-    <div class="card">
-      <div class="fake-img g6" style="height:340px;">
-        <div class="noise"></div>
-        <div style="font-size:70px;position:relative;z-index:1;opacity:0.8">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7EWOQJsNTCPLpP4rArRV4XIICu7N7jHv0LoF0-4QgRTbcI1V4HGllo7CBUkWbce2Uhq0n-xplkr3IzQDsHbR2bBxEt4qLe6Xo5-BUVk76xIorqpjyjwIZJjFA2TxVKQIFPHgC00WTr9Yk_WC-f-xz7JuriABi8Xv8Il-tJEqHRlq5-RLbycEp3N1dzErcFZU4naQusv7ONvbAo9tWrTUXUQQxPOh6iRCkbubfo0zRZgNUdthN_duSOeXI4eP92Zn4P_xzEfEdy4pA" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Digital Consciousness</div>
-        <div class="card-source">Stable Diffusion</div>
-      </div>
-    </div>
-
-
-
-    <div class="card">
-      <div class="fake-img g7" style="height:150px;">
-        <div class="noise"></div>
-        <div style="font-size:48px;position:relative;z-index:1;opacity:0.75">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0y8_nKbvTvg6QaL978jynkcLWEVdQO08UhUCJIU71KciSMT9JTgRbkh1wL1EK-6V0dOl65-ENy2fECjGqWnb4swj55H1MjQybqkrm3eRiNiCGOLmKyutvFhCkL2M_Hfiq_WTD8LQn6OLQ9nv5WCwjWQVj6nOinv0R3etTw9M2XjTVhcvUoqV7QHBV7qiKNILkbzJYb-qnFH7gSRDSZG-I3uAkgX7IeSPGQERykIDps5ewp1EJDh_g8XYgV1Y_qGvc7N-bTDxGZDJV" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Organic Structure #21</div>
-        <div class="card-source">Stable Diffusion</div>
-      </div>
-    </div>
-
-
-
-    <div class="card">
-      <div class="fake-img g10" style="height:320px;">
-        <div class="noise"></div>
-        <div style="font-size:80px;position:relative;z-index:1;opacity:0.85">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuALqtc77nKJHGV2mEqHBbJgAHzfrMZ7a2N2_Yyn8FduQCSDtOcEwfC0jwQzoXrbmkdDxWzmTJIeWWf8jkvfPOI6wjooPij228iNY8Ez6mJz2QFAMcMwqcr5TVusC9iReWutpM4XpXHAcNIHKyhmHNeTXMIF-FEDjLsdIEEer0_P1QkLR9bKaDkxQC2ks2ytKNQ_4YnxkjuAL8p6jHDQTMM2DxcpgrLH722XOPLZl6EeA7LU67bTXVDALlxKblSUFiMdQgxZNJMP62sc" alt="">
-        </div>
-      </div>
-      <span class="card-badge2">Stable Diffusion XL</span>
-    </div>
-
-
-    <div class="card">
-      <div class="fake-img g8" style="height:160px;">
-        <div class="noise"></div>
-        <div style="font-size:48px;position:relative;z-index:1;opacity:0.75">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwCFAJqydqzReoDLrskPBqThA0Hc78qVuUoX9hlkdWxvLryCgB-pISvMmdinnpbnikKxsPBuCPOvsVilu8wNAzqaWx6qCp1ye5y-ybHtVUvl2t4iIfCN0iNa-fvRwovE5NrUeVkXuGxcuztiH4_ZDkmtHkz-lecdwul2k2jVW0zhMSKfVcmTH8ve8cvydWcL71Em_JDP3oCOTiojYWXXCjEgx2VQDpo1-jUJSRrji7y_ikYd4thiU9fvT_ohFIlnhAUB3iiSfKENk5" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Neon Geometries</div>
-        <div class="card-source">Midjourney v6</div>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="fake-img g6" style="height:145px;">
-        <div class="noise"></div>
-        <div style="font-size:45px;position:relative;z-index:1;opacity:0.75">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkoWGYdhfZaAcQd9Q9d5j-b58UmwBN3O6mQ2XzrVy7PIqDTSr5oFso4jewjuSZamykTh_kRQN372Rs_IuI0lQUas48ZCLIiNJf3gsj5WCiwLt5msb_sH4ymDuqwx1DIaQuUQaFKOiDi9OfgHnQvZSdnpZTP_f-ANjSJiF_F4dFrVypsHy4abLpuI5vOeE_K5HUT2hQBBFwzTMG6jKR68gtggiDyNsq4JCxSdVjiQ9blb_0T9kNH6_w0qiM3egij1iifH9UW5qrytuG" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Metallic Flow Study</div>
-        <div class="card-source">Midjourney v6</div>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="fake-img g9" style="height:175px;">
-        <div class="noise"></div>
-        <div style="font-size:52px;position:relative;z-index:1;opacity:0.8">
-            <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5Q0Jg-uLShZHFT6yArblEf9H-5FRQfIBbuUl111OeErxzO40RjVsvSZH6BVuzhxUAqLt0agaRHlnLHxhS22wLGoUFpfCSB38z4XBn-_rNFcACD3RtNaGQ4e7ZsxyV7RnNhaLAbQgDvLyL6c8V4bnkOKkyhNn9PAbtviaKWYiPEjN1cOKg39FXfNCQZLIw1Zd6GAvzsJSlFW0hR6GRgqaDutj7ioWKDDyCVP82SX-lti-AKboLXT1Y8YkuchG9knOPeK5hrnHJZGrK" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Digital Consciousness</div>
-        <div class="card-source">Stable Diffusion</div>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <div class="fake-img g2" style="height:155px;">
-        <div class="noise"></div>
-        <div style="font-size:46px;position:relative;z-index:1;opacity:0.7">
-            <img src="https://picsum.photos/700/500?2" alt="">
-        </div>
-      </div>
-      <div class="card-overlay">
-        <div class="card-title">Cosmic Nebula #21</div>
-        <div class="card-source">Midjourney v6</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-
-<section class="engineered">
-  <div class="eng-img">
-    <div class="eng-img-inner">
-        <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm2nimDG22L6qw2H_djRm3Fdf-L6lIQ4D4lAqnKYdyONxq5k7MRnhBXbEMhDrW8I2pSttGJBEVyGS-05MU8XjL8xIk7IzIMKpIgx9gS1R5PRI8w_14JmWM7vi-IQqzpmBYeigjgXr-z13EeZmjJUaRoFxB8w03ZqlCgaKo_bttjg5tD9LtlIOeB7sH21iB45NISGuk3_qu5HwGIcxKZ8FOKjTNTNQbpxul28efBGQGCy_TKo8LhqMzioLqMclwXZi5LxvjphsW13sh" alt="">
-    </div>
-  </div>
-  <div class="eng-content">
-    <h2>Engineered for Accuracy</h2>
-    <p class="eng-sub">Our prompts aren't just guesses. Each entry is validated across multiple AI models to ensure the results you see are the results you get. No more wasted credits on hallucinations.</p>
-    <ul class="eng-features">
-      <li class="eng-feat">
-        <div class="feat-icon">✓</div>
-        Verified parameters and aspect ratios
-      </li>
-      <li class="eng-feat">
-        <div class="feat-icon">✓</div>
-        Model-specific optimization guides
-      </li>
-      <li class="eng-feat">
-        <div class="feat-icon">✓</div>
-        Deep metadata for consistent generation
-      </li>
-    </ul>
-  </div>
-</section>
-<section class="creators-section">
-  <h2>TOP CREATORS THIS WEEK</h2>
-  <div class="creators-grid">
-    <div class="creator-card">
-      <div class="creator-avatar">
-        <img class="avtar-img" src="https://media.licdn.com/dms/image/v2/D4D03AQEgCuuhRC7DvA/profile-displayphoto-scale_400_400/B4DZ2ve7N1GcAg-/0/1776765615153?e=1780531200&v=beta&t=CG1B6CKOSs7dxQ5FiyH15hI_R-atnXYlUK3upFppL-0" alt="">
-      </div>
-      <div class="creator-info">
-        <div class="creator-name">Sandesh Narkar</div>
-        <div class="creator-role">Battle-Tough Engineer</div>
-        <div class="creator-stats">
-          <div class="stat-item">
-            <span class="stat-num">220</span>
-            <span class="stat-label">Prompts</span>
-          </div>
-          <div class="stat-item">
-            <span class="stat-num">1.2k</span>
-            <span class="stat-label">Followers</span>
+    <div class="categories">
+      <div class="cat-item">
+        <div class="cat-thumb char">
+          <div class="cat-thumb-inner">
+            <img
+              src="https://imgs.search.brave.com/wNOWnTHVPCSIBS2U1UzdSZxGuiT6wnGQ-GzhAJ5B-Y4/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly8xNDc0/ODk5MjMxLnJzYy5j/ZG43Ny5vcmcvYXBp/L2ctd2FsbHBhcGVy/LWltYWdlLzIwMC80/MjAvN2E4YmYzYWU0/MmY2YWE4NDg0MzEx/MjA0YTc1ZGNlZjY3/MTIwOWE0NGY0MTE2/ZTgzMzRjYjM2NTIy/YTRlZTkxMGIwNGY3/N2E3NDZhZjkzM2Jk/ZTg3NmExZGVhZTNk/M2E5OWNjYWY4MjRk/MzUyN2E1NTAxOTFh/NjEwMDBkODJlMjE4/N2ZjMGFiYjA4ZjRk/Y2I4MDVlNmU3MTlm/N2RlYjJhYTIzNjQw/NTE2ZGIxZTdkLndl/YnA"
+              alt=""
+            />
           </div>
         </div>
+        <span class="cat-label">Characters</span>
+      </div>
+      <div class="cat-item">
+        <div class="cat-thumb env">
+          <div class="cat-thumb-inner">
+            <img
+              src="https://imgs.search.brave.com/dvZ15TRbfCYGcy37lOeG4633145AgpL-NCvIbLX06L0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly8xNDc0/ODk5MjMxLnJzYy5j/ZG43Ny5vcmcvYXBp/L2Mtd2FsbHBhcGVy/LWltYWdlLzIwMC80/MjAvNzk4Y2YxYWI1/NmY3YWE5MjhhMzIw/MjBkZTAzM2RmYWYy/MzJlY2I3ZWE0Mjc3/Mjk0MjI5MjZlMDA2/ZDM1ODcwZWVhMDYy/OC53ZWJw"
+              alt=""
+            />
+          </div>
+        </div>
+        <span class="cat-label">Environment</span>
+      </div>
+      <div class="cat-item">
+        <div class="cat-thumb tech">
+          <div class="cat-thumb-inner">
+            <img
+              src="https://imgs.search.brave.com/n9qz5vQypSj4gYBJZwgY9ehckl_nOCnlN0S2GHqEYsM/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9jb250/ZW50LnBleGVscy5j/b20vYWlnYy1idW5k/bGUvaW1hZ2VzLzFi/NWUwZDZmLWNiZTMt/NDE1OC1hNzNlLTQ3/OTg2NWRhMDRmOS5q/cGc"
+              alt=""
+            />
+          </div>
+        </div>
+        <span class="cat-label">Technical</span>
+      </div>
+      <div class="cat-item">
+        <div class="cat-thumb ill">
+          <div class="cat-thumb-inner">
+            <img
+              src="https://www.livewallpapers.com/uploads/lw_categories/files/images/67d8204754a85_animals-wallpaper.jpg"
+              alt=""
+            />
+          </div>
+        </div>
+        <span class="cat-label">Illustration</span>
+      </div>
+      <div class="cat-item">
+        <div class="cat-thumb cin">
+          <div class="cat-thumb-inner">
+            <img
+              src="https://imgs.search.brave.com/ZUGX-Y8wIrXvltklA9-UV0t5VcipAMQIYbuL7O27K0w/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMucGV4ZWxzLmNv/bS9waG90b3MvMzY0/NTU2NDkvcGV4ZWxz/LXBob3RvLTM2NDU1/NjQ5L2ZyZWUtcGhv/dG8tb2YtZHJhbWF0/aWMtc2lsaG91ZXR0/ZS1vZi1hLW1hbi1p/bi1ldmVuaW5nLWxp/Z2h0LmpwZWc_YXV0/bz1jb21wcmVzcyZj/cz10aW55c3JnYiZk/cHI9MSZ3PTUwMA"
+              alt=""
+            />
+          </div>
+        </div>
+        <span class="cat-label">Cinematic</span>
+      </div>
+      <div class="cat-item">
+        <div class="cat-thumb uiux">
+          <div class="cat-thumb-inner">
+            <img
+              src="https://imgs.search.brave.com/KmXcdP7jTUfCKRu2qCViO0Oav-HU-DTXRWneG1s4w8Q/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly9pbWcu/bWFnbmlmaWMuY29t/L2ZyZWUtdmVjdG9y/L2dyYWRpZW50LXVp/LXV4LWJhY2tncm91/bmQtaWxsdXN0cmF0/ZWRfMjMtMjE0OTA1/MDE4Mi5qcGc_c2Vt/dD1haXNfaHlicmlk/Jnc9NzQwJnE9ODA"
+              alt=""
+            />
+          </div>
+        </div>
+        <span class="cat-label">UI/UX</span>
       </div>
     </div>
-    <div class="creator-card">
-      <div class="creator-avatar">
-        <img class="avtar-img" src="myimg.jpeg" alt="">
-      </div>
-      <div class="creator-info">
-        <div class="creator-name">Satyam Yadav</div>
-        <div class="creator-role">Visual Storyteller</div>
-        <div class="creator-stats">
-          <div class="stat-item">
-            <span class="stat-num">315</span>
-            <span class="stat-label">Prompts</span>
+
+    <div class="what-section">
+      <h2>WHAT ARE YOU BUILDING TODAY?</h2>
+    </div>
+    <section class="section">
+      <div class="section-header">
+        <div class="section-title-block">
+          <div class="section-title">TRENDING PROMPTS THIS HOUR</div>
+          <div class="section-subtitle">
+            Highly accurate prompts currently generating buzz.
           </div>
-          <div class="stat-item">
-            <span class="stat-num">1.2m</span>
-            <span class="stat-label">Followers</span>
+        </div>
+        <a href="#" class="view-all">View All →</a>
+      </div>
+
+      <div class="masonry">
+        <div class="card">
+          <div class="fake-img g1" style="height: 220px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 60px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.7;
+              "
+            >
+              <img src="https://picsum.photos/600/900?3" alt="" />
+            </div>
+          </div>
+          <span class="card-badge">Photorealistic</span>
+          <span class="card-badge2">3.6</span>
+          <div
+            class="card-overlay"
+            style="
+              position: relative;
+              background: none;
+              padding: 10px 10px 10px;
+            "
+          >
+            <div class="card-title" style="color: #ddd">
+              "Lone astronaut standing on the edge of a Martian..."
+            </div>
+            <div class="card-source" style="color: #666">
+              Stable Diffusion XL
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="padding: 14px 12px 8px">
+            <div class="card-prompt">
+              "Organic glass structures, iridescent textures,..."
+            </div>
+          </div>
+          <div class="card-prompt-footer">
+            <div class="likes">
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"
+                />
+              </svg>
+              3.4k likes
+            </div>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              style="color: #666"
+            >
+              <rect x="9" y="9" width="13" height="13" rx="2" />
+              <path
+                d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+              />
+            </svg>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g3" style="height: 180px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 55px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.75;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5oQLtbEMBSEyjNkZ83o30oknM2e6S6jG8_LvKcWyharetgdPn6QXtG39hMv3GWQdvjNia1T44b57dRwuh4a9UxZZEO92OJ4nz0TsZrAHlTvvZcnvEoZjJ7DpO3WERMe_bPH85dEYUJk768fYvmuXDJN2UVrVUpTfZV1YhgawQPRp0mtnguFlQjVsbql-8xmXKA6kjIlMoHpaHSwfK9vRb-rP3F5QGbT2rv5jHidCmy3Mw_EzrM-bZkFZ-bBVNHR5_kmRfONRtLnLn"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Abstract Flow State</div>
+            <div class="card-source">DALL·E 3</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g4" style="height: 170px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 50px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.75;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuD38kALEa3n4Dek1LgcOMDWCWeHgTZQ8S9iiruqLr81T-aXmdrbfCtl7sBWfF9-Z67DQGGCEKdm682F4iD9vZhKB8xElY9Boid5FojLv1g_ZL2CbWQOfFf_96Xo-C16FjJ-nn-Fm3H_TST0Ng2Jz8COwKFx-pZzv2kQIl-qOWC6FeH01pZExzHQHAjF8SFfvimYkh4bm4DBmwy3IeetAOmGi_q0hNd9NuOLunKMogwk_ugpI16OGA07HU9Xb-WbgB1mtlSw9SMVLqko"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">
+              "Utopian cityscape, solarpunk aesthetic, lush..."
+            </div>
+          </div>
+          <button class="copy-btn">Copy Prompt</button>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g5" style="height: 175px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 52px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.8;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAAH2FfrpYfzUn5ou6EUQu1rYojgSN5_vPI4UhX1Wr0653vN3Ab8l6Bu2hheF7_iYXgT6TFEh4BxmWCRCR24ODpmpLF8NiCd-IMuwFAe3aGSd7asKcOayVKy7tScVxGYk3Z2NzdXcwsd53vLhpv4VIx2c3YNB53nQ5EdvdoDWJ4VC4CV82wjQxf9bzBOjU_x5DnM4XuhhHbnUfXY1vfWtgS8NnVQcTjTnLvde5G36i5rVz9h-s66LgD8tzcD7uWYk2SJGrxPnGVKugx"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Cybernetic Neural Matrix</div>
+            <div class="card-source">on the edge of a Digital...</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g6" style="height: 340px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 70px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.8;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7EWOQJsNTCPLpP4rArRV4XIICu7N7jHv0LoF0-4QgRTbcI1V4HGllo7CBUkWbce2Uhq0n-xplkr3IzQDsHbR2bBxEt4qLe6Xo5-BUVk76xIorqpjyjwIZJjFA2TxVKQIFPHgC00WTr9Yk_WC-f-xz7JuriABi8Xv8Il-tJEqHRlq5-RLbycEp3N1dzErcFZU4naQusv7ONvbAo9tWrTUXUQQxPOh6iRCkbubfo0zRZgNUdthN_duSOeXI4eP92Zn4P_xzEfEdy4pA"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Digital Consciousness</div>
+            <div class="card-source">Stable Diffusion</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g7" style="height: 150px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 48px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.75;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuB0y8_nKbvTvg6QaL978jynkcLWEVdQO08UhUCJIU71KciSMT9JTgRbkh1wL1EK-6V0dOl65-ENy2fECjGqWnb4swj55H1MjQybqkrm3eRiNiCGOLmKyutvFhCkL2M_Hfiq_WTD8LQn6OLQ9nv5WCwjWQVj6nOinv0R3etTw9M2XjTVhcvUoqV7QHBV7qiKNILkbzJYb-qnFH7gSRDSZG-I3uAkgX7IeSPGQERykIDps5ewp1EJDh_g8XYgV1Y_qGvc7N-bTDxGZDJV"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Organic Structure #21</div>
+            <div class="card-source">Stable Diffusion</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g10" style="height: 320px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 80px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.85;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuALqtc77nKJHGV2mEqHBbJgAHzfrMZ7a2N2_Yyn8FduQCSDtOcEwfC0jwQzoXrbmkdDxWzmTJIeWWf8jkvfPOI6wjooPij228iNY8Ez6mJz2QFAMcMwqcr5TVusC9iReWutpM4XpXHAcNIHKyhmHNeTXMIF-FEDjLsdIEEer0_P1QkLR9bKaDkxQC2ks2ytKNQ_4YnxkjuAL8p6jHDQTMM2DxcpgrLH722XOPLZl6EeA7LU67bTXVDALlxKblSUFiMdQgxZNJMP62sc"
+                alt=""
+              />
+            </div>
+          </div>
+          <span class="card-badge2">Stable Diffusion XL</span>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g8" style="height: 160px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 48px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.75;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwCFAJqydqzReoDLrskPBqThA0Hc78qVuUoX9hlkdWxvLryCgB-pISvMmdinnpbnikKxsPBuCPOvsVilu8wNAzqaWx6qCp1ye5y-ybHtVUvl2t4iIfCN0iNa-fvRwovE5NrUeVkXuGxcuztiH4_ZDkmtHkz-lecdwul2k2jVW0zhMSKfVcmTH8ve8cvydWcL71Em_JDP3oCOTiojYWXXCjEgx2VQDpo1-jUJSRrji7y_ikYd4thiU9fvT_ohFIlnhAUB3iiSfKENk5"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Neon Geometries</div>
+            <div class="card-source">Midjourney v6</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g6" style="height: 145px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 45px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.75;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuAkoWGYdhfZaAcQd9Q9d5j-b58UmwBN3O6mQ2XzrVy7PIqDTSr5oFso4jewjuSZamykTh_kRQN372Rs_IuI0lQUas48ZCLIiNJf3gsj5WCiwLt5msb_sH4ymDuqwx1DIaQuUQaFKOiDi9OfgHnQvZSdnpZTP_f-ANjSJiF_F4dFrVypsHy4abLpuI5vOeE_K5HUT2hQBBFwzTMG6jKR68gtggiDyNsq4JCxSdVjiQ9blb_0T9kNH6_w0qiM3egij1iifH9UW5qrytuG"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Metallic Flow Study</div>
+            <div class="card-source">Midjourney v6</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g9" style="height: 175px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 52px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.8;
+              "
+            >
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5Q0Jg-uLShZHFT6yArblEf9H-5FRQfIBbuUl111OeErxzO40RjVsvSZH6BVuzhxUAqLt0agaRHlnLHxhS22wLGoUFpfCSB38z4XBn-_rNFcACD3RtNaGQ4e7ZsxyV7RnNhaLAbQgDvLyL6c8V4bnkOKkyhNn9PAbtviaKWYiPEjN1cOKg39FXfNCQZLIw1Zd6GAvzsJSlFW0hR6GRgqaDutj7ioWKDDyCVP82SX-lti-AKboLXT1Y8YkuchG9knOPeK5hrnHJZGrK"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Digital Consciousness</div>
+            <div class="card-source">Stable Diffusion</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="fake-img g2" style="height: 155px">
+            <div class="noise"></div>
+            <div
+              style="
+                font-size: 46px;
+                position: relative;
+                z-index: 1;
+                opacity: 0.7;
+              "
+            >
+              <img src="https://picsum.photos/700/500?2" alt="" />
+            </div>
+          </div>
+          <div class="card-overlay">
+            <div class="card-title">Cosmic Nebula #21</div>
+            <div class="card-source">Midjourney v6</div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
+    <section class="engineered">
+      <div class="eng-img">
+        <div class="eng-img-inner">
+          <img
+            src="https://lh3.googleusercontent.com/aida-public/AB6AXuAm2nimDG22L6qw2H_djRm3Fdf-L6lIQ4D4lAqnKYdyONxq5k7MRnhBXbEMhDrW8I2pSttGJBEVyGS-05MU8XjL8xIk7IzIMKpIgx9gS1R5PRI8w_14JmWM7vi-IQqzpmBYeigjgXr-z13EeZmjJUaRoFxB8w03ZqlCgaKo_bttjg5tD9LtlIOeB7sH21iB45NISGuk3_qu5HwGIcxKZ8FOKjTNTNQbpxul28efBGQGCy_TKo8LhqMzioLqMclwXZi5LxvjphsW13sh"
+            alt=""
+          />
+        </div>
+      </div>
+      <div class="eng-content">
+        <h2>Engineered for Accuracy</h2>
+        <p class="eng-sub">
+          Our prompts aren't just guesses. Each entry is validated across
+          multiple AI models to ensure the results you see are the results you
+          get. No more wasted credits on hallucinations.
+        </p>
+        <ul class="eng-features">
+          <li class="eng-feat">
+            <div class="feat-icon">✓</div>
+            Verified parameters and aspect ratios
+          </li>
+          <li class="eng-feat">
+            <div class="feat-icon">✓</div>
+            Model-specific optimization guides
+          </li>
+          <li class="eng-feat">
+            <div class="feat-icon">✓</div>
+            Deep metadata for consistent generation
+          </li>
+        </ul>
+      </div>
+    </section>
+    <section class="creators-section">
+      <h2>TOP CREATORS THIS WEEK</h2>
+      <div class="creators-grid">
+        <div class="creator-card">
+          <div class="creator-avatar">
+            <img
+              class="avtar-img"
+              src="https://media.licdn.com/dms/image/v2/D4D03AQEgCuuhRC7DvA/profile-displayphoto-scale_400_400/B4DZ2ve7N1GcAg-/0/1776765615153?e=1780531200&v=beta&t=CG1B6CKOSs7dxQ5FiyH15hI_R-atnXYlUK3upFppL-0"
+              alt=""
+            />
+          </div>
+          <div class="creator-info">
+            <div class="creator-name">Sandesh Narkar</div>
+            <div class="creator-role">Battle-Tough Engineer</div>
+            <div class="creator-stats">
+              <div class="stat-item">
+                <span class="stat-num">220</span>
+                <span class="stat-label">Prompts</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">1.2k</span>
+                <span class="stat-label">Followers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="creator-card">
+          <div class="creator-avatar">
+            <img class="avtar-img" src="myimg.jpeg" alt="" />
+          </div>
+          <div class="creator-info">
+            <div class="creator-name">Satyam Yadav</div>
+            <div class="creator-role">Visual Storyteller</div>
+            <div class="creator-stats">
+              <div class="stat-item">
+                <span class="stat-num">315</span>
+                <span class="stat-label">Prompts</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">1.2m</span>
+                <span class="stat-label">Followers</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
+    <section class="cta-section">
+      <h2>Ready to accelerate your workflow?</h2>
+      <p>
+        Join 50,000+ creators building the next generation of digital art with
+        Prompterest.
+      </p>
+      <div class="cta-btns">
+        <a href="#" class="btn-red" style="padding: 11px 26px; font-size: 14px"
+          >Sign Up Free</a
+        >
+        <a href="#" class="btn-outline">Browse Documentation</a>
+      </div>
+    </section>
 
+    <footer>
+      <span class="footer-copy"
+        >© 2024 Prompterest. Engineered for AI Artists.</span
+      >
+      <ul class="footer-links">
+        <li><a href="#">Privacy Policy</a></li>
+        <li><a href="#">Terms of Service</a></li>
+        <li><a href="#">API Docs</a></li>
+        <li><a href="#">Contact Us</a></li>
+      </ul>
+    </footer>
 
-<section class="cta-section">
-  <h2>Ready to accelerate your workflow?</h2>
-  <p>Join 50,000+ creators building the next generation of digital art with Prompterest.</p>
-  <div class="cta-btns">
-    <a href="#" class="btn-red" style="padding:11px 26px;font-size:14px;">Sign Up Free</a>
-    <a href="#" class="btn-outline">Browse Documentation</a>
-  </div>
-</section>
+    <script>
+      const toggle = document.getElementById("themeToggle");
 
-
-
-
-
-<footer>
-  <span class="footer-copy">© 2024 Prompterest. Engineered for AI Artists.</span>
-  <ul class="footer-links">
-    <li><a href="#">Privacy Policy</a></li>
-    <li><a href="#">Terms of Service</a></li>
-    <li><a href="#">API Docs</a></li>
-    <li><a href="#">Contact Us</a></li>
-  </ul>
-</footer>
-
-
-<script>
-const toggle = document.getElementById("themeToggle");
-
-toggle.addEventListener("change", () => {
-    document.body.classList.toggle("light-theme");
-});
-</script>
-</body>
+      toggle.addEventListener("change", () => {
+        document.body.classList.toggle("light-theme");
+      });
+    </script>
+  </body>
 </html>
