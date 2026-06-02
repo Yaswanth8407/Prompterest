@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title> Prompterest</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/stylesheets/addPost.css" />
+    <script>
+      function toggleTheme() {
+        document.documentElement.classList.toggle("dark");
+
+        localStorage.setItem(
+          "prest-theme",
+          document.documentElement.classList.contains("dark")
+            ? "dark"
+            : "light",
+        );
+      }
+
+      (function () {
+        const saved = localStorage.getItem("prest-theme");
+
+        if (saved === "dark") {
+          document.documentElement.classList.add("dark");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <aside id="sidebar">
+      <div class="logo">P</div>
+
+      <nav>
+        <a class="nav-icon active" href="#">
+          <span
+            class="material-symbols-outlined"
+            style="font-variation-settings: &quot;FILL&quot; 1"
+          >
+            home
+          </span>
+          <span class="nav-label">Home</span>
+        </a>
+
+        <a class="nav-icon" href="#">
+          <span class="material-symbols-outlined">explore</span>
+          <span class="nav-label">Explore</span>
+        </a>
+
+        <a class="nav-icon" href="#">
+          <span class="material-symbols-outlined">add_circle</span>
+          <span class="nav-label">Create</span>
+        </a>
+
+        <a class="nav-icon" href="#">
+          <span class="material-symbols-outlined">bookmark</span>
+          <span class="nav-label">Saved</span>
+        </a>
+
+        <a class="nav-icon" href="#">
+          <span class="material-symbols-outlined">notifications</span>
+          <span class="nav-label">Notifications</span>
+        </a>
+
+        <a class="nav-icon" href="#">
+          <span class="material-symbols-outlined">chat</span>
+          <span class="nav-label">Messages</span>
+        </a>
+
+        <a class="nav-icon" href="#">
+          <span class="material-symbols-outlined">person</span>
+          <span class="nav-label">Profile</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <a class="nav-icon" href="#">
+          <span class="material-symbols-outlined">settings</span>
+          <span class="nav-label">Settings</span>
+        </a>
+      </div>
+    </aside>
+
+    <header id="header">
+      <div class="header-left">
+        <h1 class="header-logo">Prompterest</h1>
+
+        <div class="search-wrap">
+          <span class="material-symbols-outlined search-icon"> search </span>
+
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Search prompts..."
+          />
+        </div>
+      </div>
+
+      <div class="header-right">
+        <button class="toggle-track" onclick="toggleTheme()">
+          <span class="toggle-star"></span>
+          <span class="toggle-star two"></span>
+          <span class="toggle-star three"></span>
+
+          <div class="toggle-knob">
+            <span class="material-symbols-outlined" id="toggle-icon">
+              dark_mode
+            </span>
+          </div>
+        </button>
+
+        <button class="icon-btn">
+          <span class="material-symbols-outlined"> notifications </span>
+        </button>
+
+        <button class="icon-btn">
+          <span class="material-symbols-outlined"> psychology </span>
+        </button>
+
+        <img class="avatar" src="https://media.licdn.com/dms/image/v2/D4D03AQEgCuuhRC7DvA/profile-displayphoto-crop_800_800/B4DZ2ve7N1GcAI-/0/1776765615065?e=1781740800&v=beta&t=5amuIhiVsCGwNt7I3KaKPoAeFyvkfUaGPkSXmycGUCg" alt="" />
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="page-header">
+        <h1 class="page-title">Create New Prompt</h1>
+        <p class="page-subtitle">
+          Share your creative vision with the AI art community.
+        </p>
+      </div>
+
+      <div class="create-grid">
+        <div class="create-left">
+          <div class="main-preview-card">
+            <div class="preview-image-wrap">
+              <img
+                class="preview-image"
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvPnqn8CO1J_wtaM1w14yP3eBM3c9M7agbNcb7tj_N2O7H4qlP7c93r3vx44l06Zrmut1kZqDi0EeCdysLRJ7cU0d19_r4guFCmHnPyLiWMQPmqeApzv-ey9l75SM4mXdvv86JuigQelDewj0xw_GWy2uHKkIaF-DAPAA7ZL4xy6AChFIyUS6zICOtD8EO6z_bytnqm5dBWV1pj9npr3BtEJOxWPRk7lAG5_ZhQyRPsK64tjpFI_FZrKFpjMH5uEF-My-zR7VP6Hmn"
+                alt="Futuristic cyborg portrait"
+              />
+              <div class="preview-overlay">
+                <span class="material-symbols-outlined">cloud_upload</span>
+                <p class="overlay-title">Change Cover Image</p>
+                <p class="overlay-sub">
+                  Drag and drop or click to replace the main showcase image
+                </p>
+              </div>
+              <div class="model-badge">
+                <span class="material-symbols-outlined badge-icon"
+                  >auto_awesome</span
+                >
+                Stable Diffusion XL
+              </div>
+            </div>
+          </div>
+
+          <div class="thumb-grid">
+            <div class="thumb thumb-tall">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC6sE78vSFi02mIIiAbq75hP-o2xSaGY7D7tfm0yBCTMh2WJWC8e3BeRLra5fDVGmpjwqeXETcBnhR0j62zD3s8IbUKTyklop5P3Wx62UcaaHu2nFiVUM0Nz1wXPueSS61BUjkvMcjogQPvL_-8FuAE5nYqIEzAq5r5CtmwiSNVPYgtpiMJWnYoz9GPjztDLep3vZ3vDofp989kYjBLj5pPPx1k2owuevUaXs7ZDJbvfq0gBO1SDDExr4QCm0mE41LolqAWI14lZw0b"
+                alt="Variation 1"
+              />
+              <div class="thumb-overlay">
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+            </div>
+            <div class="thumb thumb-square">
+              <img
+                src="https://lh3.googleusercontent.com/aida-public/AB6AXuC2M0Ap0YbDgq95GsMvytwfZFVsSrC60wK_zkKMVDAOwMMAlfzHFROFjEzeOA0TiowD0QxmpQug0LcQWS-z5yC0SCVIjSnLLFjLDoKs5_kJ8IYfBgjMFlWl4iHp-yiAcOhpcvterOAbov95YATd2ZIulvaAgbd2fIt9VB-KtXNCThsH7CWxkslCi-J1_kj1NNw0FogWZ8aA3DOHklwSIzBP8ApvBXsq0n2w6Y6imvLPmqLyRpwsiRwyNVrT0z01-miiH1auDXr5J8uF"
+                alt="Variation 2"
+              />
+              <div class="thumb-overlay">
+                <span class="material-symbols-outlined">edit</span>
+              </div>
+            </div>
+            <div class="thumb thumb-add">
+              <span class="material-symbols-outlined add-icon">add</span>
+              <span class="add-label">Add Variation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="create-right">
+          <div class="form-panel">
+            <div class="form-field">
+              <label class="field-label">Prompt Title</label>
+              <input
+                class="field-input"
+                type="text"
+                placeholder="e.g. Cybernetic Renaissance Portrait"
+              />
+            </div>
+
+            <div class="form-field">
+              <label class="field-label">Short Description</label>
+              <textarea
+                class="field-input field-textarea"
+                rows="2"
+                placeholder="Briefly explain the intent behind this generation…"
+              ></textarea>
+            </div>
+
+            <div class="form-field">
+              <div class="field-label-row">
+                <label class="field-label">Full Prompt Text</label>
+                <span class="monospace-badge">MONOSPACE</span>
+              </div>
+              <div class="prompt-textarea-wrap">
+                <textarea
+                  class="field-input field-textarea field-mono"
+                  rows="5"
+                  placeholder="/imagine prompt: futuristic cyborg portrait, golden circuitry…"
+                ></textarea>
+                <button class="copy-btn" aria-label="Copy prompt">
+                  <span class="material-symbols-outlined">content_copy</span>
+                </button>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-field">
+                <label class="field-label-sm">AI Tool Used</label>
+                <select class="field-select">
+                  <option>Midjourney v6</option>
+                  <option>Stable Diffusion XL</option>
+                  <option>DALL-E 3</option>
+                  <option>Adobe Firefly</option>
+                </select>
+              </div>
+              <div class="form-field">
+                <label class="field-label-sm">Category</label>
+                <select class="field-select">
+                  <option>Cinematic</option>
+                  <option>3D Render</option>
+                  <option>Abstract</option>
+                  <option>Character Design</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="field-label-sm">Tags</label>
+              <div class="tags-wrap">
+                <span class="tag"
+                  >Cyberpunk
+                  <button class="tag-remove" aria-label="Remove tag">
+                    <span class="material-symbols-outlined">close</span>
+                  </button></span
+                >
+                <span class="tag"
+                  >Portrait
+                  <button class="tag-remove" aria-label="Remove tag">
+                    <span class="material-symbols-outlined">close</span>
+                  </button></span
+                >
+                <button class="tag-add">+ Add tag</button>
+              </div>
+            </div>
+
+            <div class="visibility-row">
+              <div class="visibility-left">
+                <span class="material-symbols-outlined">visibility</span>
+                <span class="visibility-label">Public Visibility</span>
+              </div>
+              <label class="toggle-switch" aria-label="Toggle visibility">
+                <input type="checkbox" checked />
+                <span class="switch-track">
+                  <span class="switch-knob"></span>
+                </span>
+              </label>
+            </div>
+
+            <div class="form-actions">
+              <button class="btn-publish">
+                <span class="material-symbols-outlined">publish</span>
+                Publish Prompt
+              </button>
+              <div class="btn-row-2">
+                <button class="btn-secondary">
+                  <span class="material-symbols-outlined">save</span>
+                  Save Draft
+                </button>
+                <button class="btn-outline">
+                  <span class="material-symbols-outlined">visibility</span>
+                  Preview
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <div id="toast-container"></div>
+    <script src="/javascripts/addPost.js"></script>
+  </body>
+</html>

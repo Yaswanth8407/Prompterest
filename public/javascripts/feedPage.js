@@ -1,5 +1,3 @@
-
-
 "use strict";
 
 
@@ -24,6 +22,7 @@ function toggleTheme() {
   } catch (_) {}
 }
 
+// Init theme on page load
 (function initTheme() {
   let saved;
   try {
@@ -34,11 +33,18 @@ function toggleTheme() {
   applyTheme(useDark);
 })();
 
+// Sync theme FROM other tabs/pages (e.g. page 2 changes theme → page 1 updates)
+window.addEventListener("storage", (e) => {
+  if (e.key === "prest-theme" && e.newValue) {
+    applyTheme(e.newValue === "dark");
+  }
+});
+
 
 function initSidebarNav() {
   const icons = document.querySelectorAll("#sidebar .nav-icon");
   icons.forEach((icon) => {
-    icon.addEventListener("click", (e) => {
+    icon.addEventListener("click", () => {
       icons.forEach((i) => i.classList.remove("active"));
       icon.classList.add("active");
     });
@@ -142,6 +148,7 @@ function showToast(msg = "Prompt copied!") {
   }, 2200);
 }
 
+
 function initCopyButtons() {
   document.addEventListener("click", (e) => {
     const btn = e.target.closest(".copy-btn");
@@ -149,7 +156,6 @@ function initCopyButtons() {
       const promptText =
         btn.closest(".masonry-item")?.querySelector(".card-title")
           ?.textContent || "Prompt";
-      // In a real app, copy actual prompt text
       try {
         navigator.clipboard.writeText(`[Prompt] ${promptText}`);
       } catch (_) {}
@@ -157,6 +163,7 @@ function initCopyButtons() {
     }
   });
 }
+
 
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -200,5 +207,3 @@ document.addEventListener("DOMContentLoaded", () => {
   initSmoothScroll();
   initSidebarExpand();
 });
-
-
