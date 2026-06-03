@@ -6,6 +6,8 @@ import dotenv from "dotenv";
 import bcrypt from "bcrypt";
 import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
+import multer from "multer";
+import upload from "./config/multerconfig.js";
 
 const app = express();
 const port = 3000;
@@ -29,8 +31,8 @@ app.get("/showSignup", (req, res) => {
 });
 
 app.get("/showlogin", (req, res) => {
-  if(req.cookies.PrompterestAuthToken){
-    return res.redirect("/feed")
+  if (req.cookies.PrompterestAuthToken) {
+    return res.redirect("/feed");
   }
   res.render("loginPage");
 });
@@ -112,25 +114,25 @@ app.post("/login", async (req, res) => {
     }
     const cmpresult = await bcrypt.compare(password, foundUser.password);
     if (cmpresult) {
-    const token = jwt.sign(
-      {
-        username:foundUser.username,
-        email:foundUser.email,
-      },
-      process.env.JWT_SECRET,
-      {
-        expiresIn: "7d",
-      },
-    );
+      const token = jwt.sign(
+        {
+          username: foundUser.username,
+          email: foundUser.email,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "7d",
+        },
+      );
 
-    res.cookie("PrompterestAuthToken", token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === "production",
-      sameSite: "strict",
-      maxAge: 604800000,
-    });
+      res.cookie("PrompterestAuthToken", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 604800000,
+      });
 
-    res.redirect("/feed");
+      res.redirect("/feed");
     } else {
       return res.send("invalid username or password");
     }
@@ -144,18 +146,24 @@ app.get("/feed", (req, res) => {
 });
 
 app.get("/profile", async (req, res) => {
-  try{
-    const foundUsername = jwt.verify(req.cookies.PrompterestAuthToken,process.env.JWT_SECRET).username;
-    const foundCredentials = await user.findOne({username:foundUsername})
-    res.render("profilePage",{foundCredentials})
-  }
-  catch(err){
-    console.log(err)
+  try {
+    const foundUsername = jwt.verify(
+      req.cookies.PrompterestAuthToken,
+      process.env.JWT_SECRET,
+    ).username;
+    const foundCredentials = await user.findOne({ username: foundUsername });
+    res.render("profilePage", { foundCredentials });
+  } catch (err) {
+    console.log(err);
   }
 });
 
 app.get("/addPost", (req, res) => {
   res.render("addPost");
+});
+
+app.post("/editprofile", upload.single("profilepic"), (req, res) => {
+  console.log("hello");
 });
 
 app.listen(port, () => {
