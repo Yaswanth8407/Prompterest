@@ -141,8 +141,17 @@ app.post("/login", async (req, res) => {
   }
 });
 
-app.get("/feed", (req, res) => {
-  res.render("feedPage");
+app.get("/feed", async (req, res) => {
+  try {
+    const foundUsername = jwt.verify(
+      req.cookies.PrompterestAuthToken,
+      process.env.JWT_SECRET,
+    ).username;
+    const foundCredentials = await user.findOne({ username: foundUsername });
+    res.render("feedPage", { foundCredentials });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.get("/profile", async (req, res) => {
