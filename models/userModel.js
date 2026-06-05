@@ -4,14 +4,14 @@ const userSchema = new mongoose.Schema(
   {
     fullname: {
       type: String,
-      required: [true,"Enter your name"],
+      required: [true, "Enter your name"],
       trim: true,
     },
 
     username: {
       type: String,
-      required: [true,"Create a username"],
-      unique: [true,"Username already taken"],
+      required: [true, "Create a username"],
+      unique: [true, "Username already taken"],
       trim: true,
       lowercase: true,
     },
@@ -19,9 +19,9 @@ const userSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: [true,"Email already registered,try login instead"],
+      unique: [true, "Email already registered,try login instead"],
       lowercase: true,
-      match: [/^\S+@\S+\.\S+$/,"Invalid email"],
+      match: [/^\S+@\S+\.\S+$/, "Invalid email"],
     },
 
     password: {
@@ -29,6 +29,11 @@ const userSchema = new mongoose.Schema(
       required: true,
       // select: false,
     },
+    profilepic: {
+      type: String,
+      default: "uploads/default.jpg",
+    },
+    posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
   },
   { timestamps: true },
 );
