@@ -1,92 +1,97 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="edit page.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/stylesheets/EditProfile.css" />
+  </head>
+  <body>
+    <div class="card">
+      <h1>Edit Profile</h1>
+      <label class="theme-switch">
+        <input type="checkbox" id="themeToggle" />
+        <span class="slider"></span>
+      </label>
+      <!-- <div class="theme-toggle"> -->
 
-  <div class="card">
-    <h1>Edit Profile</h1>
-<label class="theme-switch">
-    <input type="checkbox" id="themeToggle">
-    <span class="slider"></span>
-</label>    <!-- <div class="theme-toggle"> -->
+      <div class="avatar-row">
+        <img class="avatar" src=<%= foundCredentials.profilepic %> alt="Profile photo" />
 
-    <div class="avatar-row">
-      
-      <img class="avatar" src="myimg.jpeg" alt="Profile photo" />
-      <div class="avatar-placeholder" title="Upload new photo">
-        <svg viewBox="0 0 24 24" fill="none" stroke="var(--icon)" stroke-width="2" stroke-linecap="round">
-          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
-        </svg>
-      </div>
-    </div>
+        <label for="profilePic" class="avatar-placeholder"> + </label>
 
-    <div class="form-grid">
-      <div class="field">
-        <label>Full Name</label>
-        <input type="text" value="Satyam Yadav" />
+        <input id="profilePic" type="file" accept="image/*" hidden />
       </div>
 
-      <div class="field">
-        <label>Username</label>
-        <div class="input-prefix">
-          <span>@</span>
-          <input type="text" value="Satyam_37" />
+      <div class="form-grid">
+        <div class="field">
+          <label>Full Name</label>
+          <input type="text" value="<%= foundCredentials.fullname %>" />
+        </div>
+
+        <div class="field">
+          <label>Username</label>
+          <div class="input-prefix">
+            <span>@</span>
+            <input type="text" value=" <%= foundCredentials.username %>" />
+          </div>
+        </div>
+
+        <div class="field full">
+          <div class="label-row">
+            <label>Bio</label>
+            <span class="char-count" id="charCount"><%= (foundCredentials.bio || '').length %> / 160</span>
+          </div>
+<textarea
+  id="bio"
+  maxlength="160"
+  oninput="
+    document.getElementById('charCount').textContent =
+      this.value.length + ' / 160'
+"><%= foundCredentials.bio || '' %></textarea>
+        </div>
+
+        <div class="field">
+          <label>Birthday Date</label>
+          <input type="text" value="23/03/2008" placeholder="DD/MM/YYYY" />
+        </div>
+
+        <div class="field">
+          <label>Gender</label>
+          <select>
+            <option value="male" selected>Male</option>
+            <option value="female">Female</option>
+            <option value="other">Other</option>
+            <option value="prefer_not">Prefer not to say</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label>Social media accounts</label>
+          <input type="url" value="https://instragram.com" />
         </div>
       </div>
 
-      <div class="field full">
-        <div class="label-row">
-          <label>Bio</label>
-          <span class="char-count" id="charCount">138 / 160</span>
-        </div>
-        <textarea id="bio" maxlength="160"
-          oninput="document.getElementById('charCount').textContent = this.value.length + ' / 160'"
-        >Digital architect obsessed with liquid chrome aesthetics and generative prompts. Designing the future of the metaverse one node at a time.</textarea>
-      </div>
-
-      <div class="field">
-        <label>Birthday Date</label>
-        <input type="text" value="23/03/2008" placeholder="DD/MM/YYYY" />
-      </div>
-
-      <div class="field">
-        <label>Gender</label>
-        <select>
-          <option value="male" selected>Male</option>
-          <option value="female">Female</option>
-          <option value="other">Other</option>
-          <option value="prefer_not">Prefer not to say</option>
-        </select>
-      </div>
-
-      <div class="field full">
-        <label>Social media accounts</label>
-        <input type="url" value="https://instragram.com" />
+      <div class="actions">
+        <button class="btn btn-cancel" onclick="window.location.href = '/profile'">Cancel</button>
+        <button class="btn btn-save" onclick="handleSave()">
+          Save Changes
+        </button>
       </div>
     </div>
 
-    <div class="actions">
-      <button class="btn btn-cancel" onclick="handleCancel()">Cancel</button>
-      <button class="btn btn-save" onclick="handleSave()">Save Changes</button>
-    </div>
-  </div>
+    <script>
+      const toggle = document.getElementById("themeToggle");
 
-  <script>
-const toggle = document.getElementById("themeToggle");
+      document.documentElement.setAttribute("data-theme", "dark");
 
-document.documentElement.setAttribute("data-theme", "dark");
-
-toggle.addEventListener("change", () => {
-    if (toggle.checked) {
-        document.documentElement.setAttribute("data-theme", "light");
-    } else {
-        document.documentElement.setAttribute("data-theme", "dark");
-    }
-});  </script>
-</body>
+      toggle.addEventListener("change", () => {
+        if (toggle.checked) {
+          document.documentElement.setAttribute("data-theme", "light");
+        } else {
+          document.documentElement.setAttribute("data-theme", "dark");
+        }
+      });
+    </script>
+  </body>
 </html>

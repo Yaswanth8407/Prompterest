@@ -171,8 +171,21 @@ app.get("/addPost", (req, res) => {
   res.render("addPost");
 });
 
-app.post("/editprofile", upload.single("profilepic"), (req, res) => {
-  console.log("hello");
+app.get("/showeditprofile", async (req, res) => {
+    try {
+    const foundUsername = jwt.verify(
+      req.cookies.PrompterestAuthToken,
+      process.env.JWT_SECRET,
+    ).username;
+    const foundCredentials = await user.findOne({ username: foundUsername });
+    res.render("EditProfile", { foundCredentials });
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
+  console.log("heheh")
 });
 
 app.listen(port, () => {
