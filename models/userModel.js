@@ -31,9 +31,20 @@ const userSchema = new mongoose.Schema(
     },
     profilepic: {
       type: String,
-      default: "uploads/profilepic/default.jpg",
+      required: true,
+      default: "uploads/profilepics/default.jpg",
     },
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
+    bio:{ 
+      type: String,
+      default: "",
+    },
+    birthday: {type:String,
+    },
+    gender: { 
+      type: String,
+      default: "",
+    },
   },
   { timestamps: true },
 );
