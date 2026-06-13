@@ -172,7 +172,7 @@ app.get("/addPost", (req, res) => {
 });
 
 app.get("/showeditprofile", async (req, res) => {
-    try {
+  try {
     const foundUsername = jwt.verify(
       req.cookies.PrompterestAuthToken,
       process.env.JWT_SECRET,
@@ -185,7 +185,29 @@ app.get("/showeditprofile", async (req, res) => {
 });
 
 app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
-  console.log("profilepic updated")
+  try {
+    const foundUsername = jwt.verify(
+      req.cookies.PrompterestAuthToken,
+      process.env.JWT_SECRET,
+    ).username;
+    const foundCredentials = await user.findOne({ username: foundUsername });
+    console.log(req.file);
+    const { fullname, username, bio, birthday, gender } = req.body;
+    await user.findOneAndUpdate(
+      { username: foundCredentials.username },
+      {
+        fullname,
+        username,
+        bio,
+        birthday,
+        gender,
+      },
+    );
+
+    // res.render("EditProfile", { foundCredentials });
+  } catch (err) {
+    console.log(err);
+  }
 });
 
 app.listen(port, () => {
