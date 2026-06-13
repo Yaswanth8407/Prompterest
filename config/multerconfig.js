@@ -5,14 +5,13 @@ import cookieParser from "cookie-parser";
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, "../public/uploads");
+    cb(null, path.join(import.meta.dirname,"../public/uploads/profilepics"));
   },
   filename: function (req, file, cb) {
     const Finalfilename =
       jwt.verify(req.cookies.PrompterestAuthToken, process.env.JWT_SECRET)
         .username +
-      Date.now() +
-      path.extname(req.file.originalname);
+      path.extname(file.originalname);
     cb(null, Finalfilename);
   },
 });
