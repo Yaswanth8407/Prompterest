@@ -185,7 +185,7 @@ app.get("/showeditprofile", async (req, res) => {
 });
 
 app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
-  console.log("heheh")
+  console.log("profilepic updated")
 });
 
 app.listen(port, () => {
