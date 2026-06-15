@@ -165,9 +165,7 @@
                   </span>
                 </div>
                 <p class="profile-desc">
-                  Architecting the future of AI prompts. UI/UX enthusiast.
-                  Passionate about merging human creativity with machine
-                  intelligence.
+                  <%= foundCredentials.bio %>
                 </p>
               </div>
             </div>
@@ -181,15 +179,15 @@
               </div>
               <div class="profile-stats">
                 <div class="stat">
-                  <p class="stat-num">12.4k</p>
+                  <p class="stat-num"><%= foundCredentials.followers.length %></p>
                   <p class="stat-label">Followers</p>
                 </div>
                 <div class="stat">
-                  <p class="stat-num">842</p>
+                  <p class="stat-num"><%= foundCredentials.following.length %></p>
                   <p class="stat-label">Following</p>
                 </div>
                 <div class="stat">
-                  <p class="stat-num">156</p>
+                  <p class="stat-num"><%= foundCredentials.posts.length %></p>
                   <p class="stat-label">Prompts</p>
                 </div>
                 <div class="stat">
