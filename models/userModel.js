@@ -35,16 +35,23 @@ const userSchema = new mongoose.Schema(
       default: "uploads/profilepics/default.jpg",
     },
     posts: [{ type: mongoose.Schema.Types.ObjectId, ref: "post" }],
-    bio:{ 
+    bio: {
       type: String,
       default: "",
     },
-    birthday: {type:String,
-    },
-    gender: { 
+    birthday: { type: String },
+    gender: {
       type: String,
       default: "",
     },
+    followers: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    }],
+    following: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "user",
+    }],
   },
   { timestamps: true },
 );
