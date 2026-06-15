@@ -8,6 +8,7 @@ import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 import multer from "multer";
 import upload from "./config/multerconfig.js";
+import { json } from "stream/consumers";
 
 const app = express();
 const port = 3000;
@@ -191,20 +192,27 @@ app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
       process.env.JWT_SECRET,
     ).username;
     const foundCredentials = await user.findOne({ username: foundUsername });
-    console.log(req.file);
     const { fullname, username, bio, birthday, gender } = req.body;
-    await user.findOneAndUpdate(
-      { username: foundCredentials.username },
-      {
-        fullname,
-        username,
-        bio,
-        birthday,
-        gender,
-      },
-    );
+    if (
+      foundCredentials.fullname !== user.fullname ||
+      foundCredentials.username !== user.username ||
+      foundCredentials.bio !== user.bio ||
+      foundCredentials.gender !== user.gender ||
+      foundCredentials.birthday !== user.birthday
+    ) {
+      await user.findOneAndUpdate(
+        { username: foundCredentials.username },
+        {
+          fullname,
+          username,
+          bio,
+          birthday,
+          gender,
+        },
+      );
+    }
 
-    // res.render("EditProfile", { foundCredentials });
+    res.redirect("/profile");
   } catch (err) {
     console.log(err);
   }
