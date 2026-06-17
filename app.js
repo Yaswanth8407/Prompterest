@@ -10,6 +10,7 @@ import multer from "multer";
 import upload from "./config/multerconfig.js";
 import { json } from "stream/consumers";
 import sharp from "sharp";
+import post from "./models/postModel.js";
 
 const app = express();
 const port = 3000;
@@ -30,13 +31,6 @@ app.get("/", (req, res) => {
 
 app.get("/showSignup", (req, res) => {
   res.render("signupPage", { formData: {} });
-});
-
-app.get("/showlogin", (req, res) => {
-  if (req.cookies.PrompterestAuthToken) {
-    return res.redirect("/feed");
-  }
-  res.render("loginPage");
 });
 
 app.post("/signup", async (req, res) => {
@@ -107,6 +101,13 @@ app.post("/signup", async (req, res) => {
   }
 });
 
+app.get("/showlogin", (req, res) => {
+  if (req.cookies.PrompterestAuthToken) {
+    return res.redirect("/feed");
+  }
+  res.render("loginPage");
+});
+
 app.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -169,10 +170,6 @@ app.get("/profile", async (req, res) => {
   }
 });
 
-app.get("/addPost", (req, res) => {
-  res.render("addPost");
-});
-
 app.get("/showeditprofile", async (req, res) => {
   try {
     const foundUsername = jwt.verify(
@@ -233,6 +230,30 @@ app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
     }
 
     res.redirect("/profile");
+  } catch (err) {
+    console.log(err);
+  }
+});
+
+app.get("/showaddpost", (req, res) => {
+  res.render("addPost");
+});
+
+app.post("/addpost", async (req, res) => {
+  // res.render("addPost");
+  try {
+    const { title, desc, prompt, aiTool, category, tags, visibility } = req.body;
+
+    await post.create({
+      title,
+      desc,
+      prompt,
+      aiTool,
+      category,
+      tags,
+      visiblity,
+    });
+    res.redirect("/showaddpost")
   } catch (err) {
     console.log(err);
   }
