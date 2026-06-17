@@ -9,6 +9,7 @@ import jwt from "jsonwebtoken";
 import multer from "multer";
 import upload from "./config/multerconfig.js";
 import { json } from "stream/consumers";
+import sharp from "sharp";
 
 const app = express();
 const port = 3000;
@@ -193,12 +194,31 @@ app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
     ).username;
     const foundCredentials = await user.findOne({ username: foundUsername });
     const { fullname, username, bio, birthday, gender } = req.body;
+    const profileImageName = `${username}.webp`;
+
+    await sharp(req.file.buffer)
+      .webp({ quality: 80 })
+      .toFile(
+        path.join(
+          import.meta.dirname,
+          "public/uploads/profilepics",
+          profileImageName,
+        ),
+      );
+
+    await user.findOneAndUpdate(
+      { username },
+      {
+        profilepic: `uploads/profilepics/${profileImageName}`,
+      },
+    );
+
     if (
-      foundCredentials.fullname !== user.fullname ||
-      foundCredentials.username !== user.username ||
-      foundCredentials.bio !== user.bio ||
-      foundCredentials.gender !== user.gender ||
-      foundCredentials.birthday !== user.birthday
+      foundCredentials.fullname !== fullname ||
+      foundCredentials.username !== username ||
+      foundCredentials.bio !== bio ||
+      foundCredentials.gender !== gender ||
+      foundCredentials.birthday !== birthday
     ) {
       await user.findOneAndUpdate(
         { username: foundCredentials.username },
