@@ -8,14 +8,20 @@ import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 import multer from "multer";
 import upload from "./config/multerconfig.js";
-import { json } from "stream/consumers";
 import sharp from "sharp";
 import post from "./models/postModel.js";
+import { v2 as cloudinary } from "cloudinary";
 
 const app = express();
 const port = 3000;
 
 dotenv.config();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_SECRET,
+});
 
 app.set("view engine", "ejs");
 app.use(cookieParser());
@@ -75,7 +81,7 @@ app.post("/signup", async (req, res) => {
       maxAge: 604800000,
     });
 
-    res.redirect("/feed");
+    res.redirect("/showeditprofile");
   } catch (err) {
     if (err.name === "ValidationError") {
       const errorMsg = Object.values(err.errors)[0].message;
@@ -193,22 +199,18 @@ app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
     const { fullname, username, bio, birthday, gender } = req.body;
     const profileImageName = `${username}.webp`;
 
-    await sharp(req.file.buffer)
-      .webp({ quality: 80 })
-      .toFile(
-        path.join(
-          import.meta.dirname,
-          "public/uploads/profilepics",
-          profileImageName,
-        ),
-      );
-
-    await user.findOneAndUpdate(
-      { username },
-      {
-        profilepic: `uploads/profilepics/${profileImageName}`,
-      },
+    const profilepic = await cloudinary.v2.uploader.upload(
+      sharp(req.file.buffer).webp({ quality: 80 }),
     );
+
+    console.log(profilepic);
+
+    // await user.findOneAndUpdate(
+    //   { username },
+    //   {
+    //     profilepic: `uploads/profilepics/${profileImageName}`,
+    //   },
+    // );
 
     if (
       foundCredentials.fullname !== fullname ||
@@ -240,9 +242,9 @@ app.get("/showaddpost", (req, res) => {
 });
 
 app.post("/addpost", async (req, res) => {
-  // res.render("addPost");
   try {
-    const { title, desc, prompt, aiTool, category, tags, visibility } = req.body;
+    const { title, desc, prompt, aiTool, category, tags, visibility } =
+      req.body;
 
     await post.create({
       title,
@@ -253,7 +255,7 @@ app.post("/addpost", async (req, res) => {
       tags,
       visiblity,
     });
-    res.redirect("/showaddpost")
+    res.redirect("/showaddpost");
   } catch (err) {
     console.log(err);
   }
