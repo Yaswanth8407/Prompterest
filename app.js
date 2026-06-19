@@ -8,13 +8,21 @@ import cookieParser from "cookie-parser";
 import jwt from "jsonwebtoken";
 import multer from "multer";
 import upload from "./config/multerconfig.js";
-import { json } from "stream/consumers";
 import sharp from "sharp";
+import post from "./models/postModel.js";
+import { v2 as cloudinary } from "cloudinary";
+import fs from "fs/promises";
 
 const app = express();
 const port = 3000;
 
 dotenv.config();
+
+cloudinary.config({
+  cloud_name: process.env.CLOUD_NAME,
+  api_key: process.env.CLOUD_API_KEY,
+  api_secret: process.env.CLOUD_SECRET,
+});
 
 app.set("view engine", "ejs");
 app.use(cookieParser());
@@ -30,13 +38,6 @@ app.get("/", (req, res) => {
 
 app.get("/showSignup", (req, res) => {
   res.render("signupPage", { formData: {} });
-});
-
-app.get("/showlogin", (req, res) => {
-  if (req.cookies.PrompterestAuthToken) {
-    return res.redirect("/feed");
-  }
-  res.render("loginPage");
 });
 
 app.post("/signup", async (req, res) => {
@@ -81,7 +82,7 @@ app.post("/signup", async (req, res) => {
       maxAge: 604800000,
     });
 
-    res.redirect("/feed");
+    res.redirect("/showeditprofile");
   } catch (err) {
     if (err.name === "ValidationError") {
       const errorMsg = Object.values(err.errors)[0].message;
@@ -105,6 +106,13 @@ app.post("/signup", async (req, res) => {
       },
     });
   }
+});
+
+app.get("/showlogin", (req, res) => {
+  if (req.cookies.PrompterestAuthToken) {
+    return res.redirect("/feed");
+  }
+  res.render("loginPage");
 });
 
 app.post("/login", async (req, res) => {
@@ -169,10 +177,6 @@ app.get("/profile", async (req, res) => {
   }
 });
 
-app.get("/addPost", (req, res) => {
-  res.render("addPost");
-});
-
 app.get("/showeditprofile", async (req, res) => {
   try {
     const foundUsername = jwt.verify(
@@ -192,47 +196,98 @@ app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
       req.cookies.PrompterestAuthToken,
       process.env.JWT_SECRET,
     ).username;
-    const foundCredentials = await user.findOne({ username: foundUsername });
-    const { fullname, username, bio, birthday, gender } = req.body;
-    const profileImageName = `${username}.webp`;
 
-    await sharp(req.file.buffer)
-      .webp({ quality: 80 })
-      .toFile(
-        path.join(
-          import.meta.dirname,
-          "public/uploads/profilepics",
-          profileImageName,
-        ),
+    const foundCredentials = await user.findOne({
+      username: foundUsername,
+    });
+
+    if (!foundCredentials) {
+      return res.redirect("/showlogin");
+    }
+
+    const { fullname, username, bio, birthday, gender } = req.body;
+
+    let profilepic = foundCredentials.profilepic;
+
+    if (req.file) {
+      const profileImageName = `${username}.webp`;
+
+      const filePath = path.join(
+        import.meta.dirname,
+        "public/uploads/profilepics",
+        profileImageName,
       );
 
+      await sharp(req.file.buffer).webp({ quality: 80 }).toFile(filePath);
+
+      const result = await cloudinary.uploader.upload(filePath, {
+        folder: "profilepics",
+        public_id: username,
+      });
+
+      profilepic = result.secure_url;
+
+      await fs.unlink(filePath);
+    }
+
     await user.findOneAndUpdate(
-      { username },
+      { username: foundCredentials.username },
       {
-        profilepic: `uploads/profilepics/${profileImageName}`,
+        fullname,
+        username,
+        bio,
+        birthday,
+        gender,
+        profilepic,
       },
     );
 
-    if (
-      foundCredentials.fullname !== fullname ||
-      foundCredentials.username !== username ||
-      foundCredentials.bio !== bio ||
-      foundCredentials.gender !== gender ||
-      foundCredentials.birthday !== birthday
-    ) {
-      await user.findOneAndUpdate(
-        { username: foundCredentials.username },
+    if (foundCredentials.username !== username) {
+      const token = jwt.sign(
         {
-          fullname,
           username,
-          bio,
-          birthday,
-          gender,
+          email: foundCredentials.email,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "7d",
         },
       );
+
+      res.cookie("PrompterestAuthToken", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 604800000,
+      });
     }
 
     res.redirect("/profile");
+  } catch (err) {
+    console.log(err);
+    res.status(500).send("Something went wrong.");
+  }
+});
+
+app.get("/showaddpost", (req, res) => {
+  res.render("addPost");
+});
+
+app.post("/addpost", async (req, res) => {
+  try {
+    const { title, desc, prompt, aiTool, category, tags, visibility } =
+      req.body;
+
+    await post.create({
+      title,
+      desc,
+      prompt,
+      aiTool,
+      category,
+      tags,
+      visiblity,
+    });
+    res.redirect("/showaddpost");
   } catch (err) {
     console.log(err);
   }

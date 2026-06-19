@@ -190,13 +190,14 @@
         </div>
 
         <div class="create-right">
-          <div class="form-panel">
+          <form class="form-panel" method="post" action="/addpost">
             <div class="form-field">
               <label class="field-label">Prompt Title</label>
               <input
                 class="field-input"
                 type="text"
                 placeholder="e.g. Cybernetic Renaissance Portrait"
+                name="title"
               />
             </div>
 
@@ -206,6 +207,7 @@
                 class="field-input field-textarea"
                 rows="2"
                 placeholder="Briefly explain the intent behind this generation…"
+                name="desc"
               ></textarea>
             </div>
 
@@ -219,6 +221,7 @@
                   class="field-input field-textarea field-mono"
                   rows="5"
                   placeholder="/imagine prompt: futuristic cyborg portrait, golden circuitry…"
+                  name="prompt"
                 ></textarea>
                 <button class="copy-btn" aria-label="Copy prompt">
                   <span class="material-symbols-outlined">content_copy</span>
@@ -229,7 +232,7 @@
             <div class="form-row-2">
               <div class="form-field">
                 <label class="field-label-sm">AI Tool Used</label>
-                <select class="field-select">
+                <select class="field-select" name="aiTool">
                   <option>Midjourney v6</option>
                   <option>Stable Diffusion XL</option>
                   <option>DALL-E 3</option>
@@ -238,7 +241,7 @@
               </div>
               <div class="form-field">
                 <label class="field-label-sm">Category</label>
-                <select class="field-select">
+                <select class="field-select" name="category">
                   <option>Cinematic</option>
                   <option>3D Render</option>
                   <option>Abstract</option>
@@ -280,7 +283,7 @@
             </div>
 
             <div class="form-actions">
-              <button class="btn-publish">
+              <button class="btn-publish" type="submit">
                 <span class="material-symbols-outlined">publish</span>
                 Publish Prompt
               </button>
@@ -295,7 +298,7 @@
                 </button>
               </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
     </main>
