@@ -11,6 +11,7 @@ import upload from "./config/multerconfig.js";
 import sharp from "sharp";
 import post from "./models/postModel.js";
 import { v2 as cloudinary } from "cloudinary";
+import fs from "fs/promises";
 
 const app = express();
 const port = 3000;
@@ -195,45 +196,76 @@ app.post("/editprofile", upload.single("profilepic"), async (req, res) => {
       req.cookies.PrompterestAuthToken,
       process.env.JWT_SECRET,
     ).username;
-    const foundCredentials = await user.findOne({ username: foundUsername });
-    const { fullname, username, bio, birthday, gender } = req.body;
-    const profileImageName = `${username}.webp`;
 
-    const profilepic = await cloudinary.v2.uploader.upload(
-      sharp(req.file.buffer).webp({ quality: 80 }),
+    const foundCredentials = await user.findOne({
+      username: foundUsername,
+    });
+
+    if (!foundCredentials) {
+      return res.redirect("/showlogin");
+    }
+
+    const { fullname, username, bio, birthday, gender } = req.body;
+
+    let profilepic = foundCredentials.profilepic;
+
+    if (req.file) {
+      const profileImageName = `${username}.webp`;
+
+      const filePath = path.join(
+        import.meta.dirname,
+        "public/uploads/profilepics",
+        profileImageName,
+      );
+
+      await sharp(req.file.buffer).webp({ quality: 80 }).toFile(filePath);
+
+      const result = await cloudinary.uploader.upload(filePath, {
+        folder: "profilepics",
+        public_id: username,
+      });
+
+      profilepic = result.secure_url;
+
+      await fs.unlink(filePath);
+    }
+
+    await user.findOneAndUpdate(
+      { username: foundCredentials.username },
+      {
+        fullname,
+        username,
+        bio,
+        birthday,
+        gender,
+        profilepic,
+      },
     );
 
-    console.log(profilepic);
-
-    // await user.findOneAndUpdate(
-    //   { username },
-    //   {
-    //     profilepic: `uploads/profilepics/${profileImageName}`,
-    //   },
-    // );
-
-    if (
-      foundCredentials.fullname !== fullname ||
-      foundCredentials.username !== username ||
-      foundCredentials.bio !== bio ||
-      foundCredentials.gender !== gender ||
-      foundCredentials.birthday !== birthday
-    ) {
-      await user.findOneAndUpdate(
-        { username: foundCredentials.username },
+    if (foundCredentials.username !== username) {
+      const token = jwt.sign(
         {
-          fullname,
           username,
-          bio,
-          birthday,
-          gender,
+          email: foundCredentials.email,
+        },
+        process.env.JWT_SECRET,
+        {
+          expiresIn: "7d",
         },
       );
+
+      res.cookie("PrompterestAuthToken", token, {
+        httpOnly: true,
+        secure: process.env.NODE_ENV === "production",
+        sameSite: "strict",
+        maxAge: 604800000,
+      });
     }
 
     res.redirect("/profile");
   } catch (err) {
     console.log(err);
+    res.status(500).send("Something went wrong.");
   }
 });
 
