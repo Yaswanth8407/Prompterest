@@ -274,9 +274,20 @@ app.get("/showaddpost", (req, res) => {
 });
 
 app.post("/addpost", async (req, res) => {
-  try {
-    const { title, desc, prompt, aiTool, category, tags, visibility } =
-      req.body;
+  try {    
+    const {
+      title,
+      desc,
+      prompt,
+      aiTool,
+      category,
+      tags,
+      visibility,
+    } = req.body;
+
+    const tagsArray = tags
+      ? tags.split(",").map((tag) => tag.trim())
+      : [];
 
     await post.create({
       title,
@@ -284,12 +295,14 @@ app.post("/addpost", async (req, res) => {
       prompt,
       aiTool,
       category,
-      tags,
-      visiblity,
+      tags: tagsArray,
+      visibility,
     });
+
     res.redirect("/showaddpost");
   } catch (err) {
-    console.log(err);
+    console.error(err);
+    res.status(500).send("Error creating post");
   }
 });
 
