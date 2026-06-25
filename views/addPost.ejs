@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title> Prompterest</title>
+    <title>Prompterest</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -126,7 +126,11 @@
           <span class="material-symbols-outlined"> psychology </span>
         </button>
 
-        <img class="avatar" src="https://media.licdn.com/dms/image/v2/D4D03AQEgCuuhRC7DvA/profile-displayphoto-crop_800_800/B4DZ2ve7N1GcAI-/0/1776765615065?e=1781740800&v=beta&t=5amuIhiVsCGwNt7I3KaKPoAeFyvkfUaGPkSXmycGUCg" alt="" />
+        <img
+          class="avatar"
+          src="https://media.licdn.com/dms/image/v2/D4D03AQEgCuuhRC7DvA/profile-displayphoto-crop_800_800/B4DZ2ve7N1GcAI-/0/1776765615065?e=1781740800&v=beta&t=5amuIhiVsCGwNt7I3KaKPoAeFyvkfUaGPkSXmycGUCg"
+          alt=""
+        />
       </div>
     </header>
 
@@ -198,6 +202,7 @@
                 type="text"
                 placeholder="e.g. Cybernetic Renaissance Portrait"
                 name="title"
+                required
               />
             </div>
 
@@ -216,87 +221,73 @@
                 <label class="field-label">Full Prompt Text</label>
                 <span class="monospace-badge">MONOSPACE</span>
               </div>
+
               <div class="prompt-textarea-wrap">
                 <textarea
                   class="field-input field-textarea field-mono"
                   rows="5"
-                  placeholder="/imagine prompt: futuristic cyborg portrait, golden circuitry…"
+                  placeholder="/imagine prompt: futuristic cyborg portrait..."
                   name="prompt"
+                  required
                 ></textarea>
-                <button class="copy-btn" aria-label="Copy prompt">
-                  <span class="material-symbols-outlined">content_copy</span>
-                </button>
               </div>
             </div>
 
             <div class="form-row-2">
               <div class="form-field">
                 <label class="field-label-sm">AI Tool Used</label>
-                <select class="field-select" name="aiTool">
-                  <option>Midjourney v6</option>
-                  <option>Stable Diffusion XL</option>
-                  <option>DALL-E 3</option>
-                  <option>Adobe Firefly</option>
+
+                <select class="field-select" name="aiTool" required>
+                  <option value="Midjourney v6">Midjourney v6</option>
+                  <option value="Stable Diffusion XL">
+                    Stable Diffusion XL
+                  </option>
+                  <option value="DALL-E 3">DALL-E 3</option>
+                  <option value="Adobe Firefly">Adobe Firefly</option>
                 </select>
               </div>
+
               <div class="form-field">
                 <label class="field-label-sm">Category</label>
-                <select class="field-select" name="category">
-                  <option>Cinematic</option>
-                  <option>3D Render</option>
-                  <option>Abstract</option>
-                  <option>Character Design</option>
+
+                <select class="field-select" name="category" required>
+                  <option value="Cinematic">Cinematic</option>
+                  <option value="3D Render">3D Render</option>
+                  <option value="Abstract">Abstract</option>
+                  <option value="Character Design">Character Design</option>
                 </select>
               </div>
             </div>
 
+            <!-- TAGS -->
             <div class="form-field">
               <label class="field-label-sm">Tags</label>
-              <div class="tags-wrap">
-                <span class="tag"
-                  >Cyberpunk
-                  <button class="tag-remove" aria-label="Remove tag">
-                    <span class="material-symbols-outlined">close</span>
-                  </button></span
-                >
-                <span class="tag"
-                  >Portrait
-                  <button class="tag-remove" aria-label="Remove tag">
-                    <span class="material-symbols-outlined">close</span>
-                  </button></span
-                >
-                <button class="tag-add">+ Add tag</button>
-              </div>
+
+              <input
+                class="field-input"
+                type="text"
+                name="tags"
+                placeholder="cyberpunk, portrait, sci-fi"
+              />
+
+              <small> Separate tags with commas. </small>
             </div>
 
-            <div class="visibility-row">
-              <div class="visibility-left">
-                <span class="material-symbols-outlined">visibility</span>
-                <span class="visibility-label">Public Visibility</span>
-              </div>
-              <label class="toggle-switch" aria-label="Toggle visibility">
-                <input type="checkbox" checked />
-                <span class="switch-track">
-                  <span class="switch-knob"></span>
-                </span>
-              </label>
+            <!-- VISIBILITY -->
+            <div class="form-field">
+              <label class="field-label-sm">Visibility</label>
+
+              <select class="field-select" name="visibility">
+                <option value="public" selected>Public</option>
+                <option value="private">Private</option>
+              </select>
             </div>
 
             <div class="form-actions">
               <button class="btn-publish" type="submit">
-                <span class="material-symbols-outlined">publish</span>
+                <span class="material-symbols-outlined"> publish </span>
                 Publish Prompt
               </button>
-              <div class="btn-row-2">
-                <button class="btn-secondary">
-                  <span class="material-symbols-outlined">save</span>
-                  Save Draft
-                </button>
-                <button class="btn-outline">
-                  <span class="material-symbols-outlined">visibility</span>
-                  Preview
-                </button>
-              </div>
             </div>
           </form>
         </div>
