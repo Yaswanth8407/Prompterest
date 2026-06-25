@@ -274,38 +274,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (btnPublish) {
     btnPublish.addEventListener("click", (e) => {
-      e.preventDefault();
       const compiledPayload = packageFormPayload();
 
       if (!compiledPayload.title || !compiledPayload.promptText) {
+        e.preventDefault();
+
         showNotification(
-          "Validation Failure: Title and Full Prompt fields are mandatory execution tracks.",
+          "Title and Full Prompt fields are mandatory.",
           "error",
         );
+
         return;
       }
 
-      console.log(
-        "Publishing configuration system payload finalized: ",
-        compiledPayload,
-      );
+      const tagsInput = document.getElementById("tagsInput");
 
-      const nativeButtonHTML = btnPublish.innerHTML;
-      btnPublish.classList.add("btn-success-state");
-      btnPublish.innerHTML = `
-        <span class="material-symbols-outlined">check_circle</span>
-        Successfully uploaded the prompt
-      `;
+      if (tagsInput) {
+        tagsInput.value = compiledPayload.tags.join(",");
+      }
 
-      showNotification(
-        `Success! "${compiledPayload.title}" verified and posted live to community streams.`,
-        "success",
-      );
-
-      setTimeout(() => {
-        btnPublish.classList.remove("btn-success-state");
-        btnPublish.innerHTML = nativeButtonHTML;
-      }, 3000);
+      showNotification(`Publishing "${compiledPayload.title}"...`, "success");
     });
   }
 
