@@ -273,7 +273,7 @@ app.get("/showaddpost", (req, res) => {
   res.render("addPost");
 });
 
-app.post("/addpost", async (req, res) => {
+app.post("/addpost", upload.single(""), async (req, res) => {
   try {    
     const {
       title,
