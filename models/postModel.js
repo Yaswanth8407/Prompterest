@@ -7,27 +7,27 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
       trim: true,
-      default:""
+      default: "",
     },
     desc: {
       type: String,
-      default:""
+      default: "",
     },
     prompt: {
       type: String,
       required: true,
       trim: true,
-      default:""
+      default: "",
     },
     aiTool: {
       type: String,
       required: true,
-      default:""
+      default: "",
     },
     category: {
       type: String,
       required: true,
-      default:"",
+      default: "",
     },
     tags: [
       {
@@ -39,6 +39,11 @@ const postSchema = mongoose.Schema(
       type: String,
       default: "",
     },
+    coverPics: [
+      {
+        type: String,
+      },
+    ],
   },
   {
     timestamps: true,
